@@ -23,8 +23,9 @@ public class Explosion : MonoBehaviour
 
         //Check if there's a wall in-between
         RaycastHit2D raycastHit2D = Physics2D.Raycast(
-            new Vector2(transform.position.x, transform.position.y), new Vector2(collision.transform.position.x, collision.transform.position.y), Mathf.Infinity,
-            LayerMask.GetMask("Default"));
+            new Vector2(transform.position.x, transform.position.y),
+            new Vector2(collision.transform.position.x- transform.position.x, collision.transform.position.y -transform.position.y),
+            Mathf.Infinity, 1 << LayerMask.NameToLayer("Default"));
         if (raycastHit2D.transform != collision.transform)
             return;
 
