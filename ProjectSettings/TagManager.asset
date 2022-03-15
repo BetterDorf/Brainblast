@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 2423693809
+    locked: 0
+  - name: Labo
+    uniqueID: 2736330913
+    locked: 0
+  - name: PuzzleElements
+    uniqueID: 2295850111
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
