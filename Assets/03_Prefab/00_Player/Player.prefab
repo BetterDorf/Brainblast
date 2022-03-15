@@ -131,11 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4d60e82cb9bc94da09d8dd8e857c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _corpse: {fileID: 6056471975898375808, guid: 36a6953358ee56a468954ffc2fec1f8c, type: 3}
-  _firstCloneVat: {fileID: 0}
-  _cloneVatReference: {fileID: 11400000, guid: 742aadfc87167164e8e65cff23edd846, type: 2}
-  _acidTime: 1
   _lives: 6
+  _firstCloneVat: {fileID: 0}
+  _acidTime: 1
+  _respawnTime: 0.25
+  _cloneVatReference: {fileID: 11400000, guid: 742aadfc87167164e8e65cff23edd846, type: 2}
+  _lifeCanvasObject: {fileID: 2323551847278867316, guid: ca55b1ca03f77fd45875554667619c07, type: 3}
+  _corpse: {fileID: 6056471975898375808, guid: 36a6953358ee56a468954ffc2fec1f8c, type: 3}
 --- !u!114 &7393732743617446130
 MonoBehaviour:
   m_ObjectHideFlags: 0

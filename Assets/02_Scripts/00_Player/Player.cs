@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] float _respawnTime = 0.25f;
 
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
+    [SerializeField] GameObject _lifeCanvasObject;
+    GameObject _lifeCanvas;
 
     //Corpses
     [SerializeField] GameObject _corpse;
@@ -35,7 +38,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _lifeCanvas = Instantiate(_lifeCanvasObject, Vector3.zero, Quaternion.identity);
+
         _firstCloneVat.GetComponent<CloneVat>()?.Select();
+
         StartCoroutine(Spawn());
     }
 
@@ -48,7 +54,10 @@ public class Player : MonoBehaviour
         //TODO update visuals
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-        if (--_lives < 0)
+        //Lose a life
+        _lives--;
+        UpdateLifeCounter();
+        if (_lives < 0)
             Lose();
 
         yield return new WaitForSeconds(_respawnTime);
@@ -61,6 +70,11 @@ public class Player : MonoBehaviour
 
         //Spawn the player
         transform.position = _cloneVatReference.GameObject.transform.position;
+    }
+
+    void UpdateLifeCounter()
+    {
+        _lifeCanvas.GetComponentInChildren<Text>().text = "x" + _lives.ToString();
     }
 
     /// <summary>
