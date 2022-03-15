@@ -13,11 +13,6 @@ public class CloneVat : Interactable
             DeSelect();
     }
 
-    public override bool ExplosionInteract()
-    {
-        return false;
-    }
-
     public override bool Interact()
     {
         return Select();
