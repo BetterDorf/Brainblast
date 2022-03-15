@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     PlayerInput _input;
     Rigidbody2D _rb;
+    Player _player;
 
     [Header("Movement Settings")]
     [SerializeField] float _acceleration = 1.0f;
@@ -16,11 +17,17 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _input = GetComponent<PlayerInput>();
+        _player = GetComponent<Player>();
     }
 
     private void FixedUpdate()
     {
-        Vector2 movement = _input.actions["Movement"].ReadValue<Vector2>();
+        Vector2 movement;
+        if (_player.State == Player.PlayerState.Dead)
+            movement = Vector2.zero;
+        else
+            movement = _input.actions["Movement"].ReadValue<Vector2>();
+
         _rb.velocity = Vector2.Lerp(_rb.velocity, movement * _maxSpeed, _acceleration * Time.fixedDeltaTime);
     }
 }

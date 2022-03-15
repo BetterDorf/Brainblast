@@ -16,18 +16,28 @@ public class Lever : Interactable
 
     private void Start()
     {
-        //Draw lines to the linked object
+        DrawLines(Color.red);
+    }
+
+    //Draw lines to the linked objects
+    protected void DrawLines(Color color)
+    {
+        //Reset the colors
         foreach (GameObject lineObject in _lines)
         {
             Destroy(lineObject);
         }
         _lines = new List<GameObject>();
+
+        //Draw a line per linked object
         foreach (Activatable activatable in _linked)
         {
             GameObject lineObject = Instantiate(_line, transform);
             lineObject.GetComponent<LineRenderer>().SetPositions(
                 new Vector3[] { transform.position, activatable.transform.position });
-            lineObject.GetComponent<LineRenderer>().useWorldSpace = true;
+
+            //Change the color of the line
+            lineObject.GetComponent<LineRenderer>().startColor = color;
 
             _lines.Add(lineObject);
         }
@@ -36,6 +46,7 @@ public class Lever : Interactable
     public override bool Interact()
     {
         _isOn = !_isOn;
+        DrawLines(_isOn ? Color.green : Color.red);
 
         foreach (Activatable activatable in _linked)
         {

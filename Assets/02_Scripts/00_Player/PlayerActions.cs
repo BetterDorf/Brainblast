@@ -21,27 +21,30 @@ public class PlayerActions : MonoBehaviour
 
     public void DieInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
             _player.Kill();
     }
 
     public void ExplodeCorpsesInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
         {
-            ExplodeCorpses();
+            StartCoroutine(ExplodeCorpses());
         }
     }
 
-    void ExplodeCorpses()
+    IEnumerator ExplodeCorpses()
     {
         //grab corpses
         List<GameObject> corpses = _player.Corpses;
+
+        //Remove null gameObjects
         corpses.RemoveAll(x => !x);
 
         //Explode the corpses
         foreach (GameObject corpse in corpses)
         {
+            yield return new WaitForSeconds(0.05f);
             corpse.GetComponent<Corpse>().Explode();
         }
 
@@ -51,7 +54,7 @@ public class PlayerActions : MonoBehaviour
 
     public void InteractInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
             Interact();
     }
 

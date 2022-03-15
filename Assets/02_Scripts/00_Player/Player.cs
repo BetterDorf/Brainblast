@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     [Header("General Variables")]
     [SerializeField] float _acidTime = 1.0f;
+    [SerializeField] float _respawnTime = 0.25f;
 
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
 
@@ -35,25 +36,31 @@ public class Player : MonoBehaviour
     void Start()
     {
         _firstCloneVat.GetComponent<CloneVat>()?.Select();
-        Spawn();
+        StartCoroutine(Spawn());
     }
 
     /// <summary>
     /// Spawn the player
     /// </summary>
     /// <returns>true if player was spawned, false if she didn't have enough lives</returns>
-    bool Spawn()
+    IEnumerator Spawn()
     {
+        //TODO update visuals
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+
         if (--_lives < 0)
-            return false;
+            Lose();
+
+        yield return new WaitForSeconds(_respawnTime);
 
         //Change the state
         _state = PlayerState.Alive;
 
+        //TODO update visuals
+        GetComponentInChildren<SpriteRenderer>().enabled = true;
+
         //Spawn the player
         transform.position = _cloneVatReference.GameObject.transform.position;
-
-        return true;
     }
 
     /// <summary>
@@ -61,6 +68,9 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Melt()
     {
+        if (_state == PlayerState.Dead)
+            return;
+
         Die();
     }
     
@@ -69,6 +79,9 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Kill()
     {
+        if (_state == PlayerState.Dead)
+            return;
+
         _corpses.Add(Instantiate(_corpse, transform.position, Quaternion.identity));
 
         Die();
@@ -80,8 +93,7 @@ public class Player : MonoBehaviour
 
         _state = PlayerState.Dead;
 
-        if (!Spawn())
-            Lose();
+        StartCoroutine(Spawn());
     }
 
     public void ApplyAcid()

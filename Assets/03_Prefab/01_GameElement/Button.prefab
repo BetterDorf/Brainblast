@@ -99,6 +99,7 @@ MonoBehaviour:
   _isOn: 0
   _linked:
   - {fileID: 0}
+  _line: {fileID: 2871565797221408393, guid: 92cd500feb7fd1544803579e4542fe86, type: 3}
   _stayPressedForSeconds: 3
 --- !u!58 &3522143294162007114
 CircleCollider2D:

@@ -13,6 +13,7 @@ public class PuzzleButton : Lever
             return false;
 
         _isOn = !_isOn;
+        DrawLines(Color.green);
 
         foreach (Activatable activatable in _linked)
         {
@@ -29,6 +30,7 @@ public class PuzzleButton : Lever
         yield return new WaitForSeconds(_stayPressedForSeconds);
 
         _isOn = false;
+        DrawLines(Color.red);
         foreach (Activatable activatable in _linked)
         {
             activatable.PowerOff();
