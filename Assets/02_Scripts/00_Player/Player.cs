@@ -38,7 +38,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TODO do this another way
         _lifeCanvas = Instantiate(_lifeCanvasObject, Vector3.zero, Quaternion.identity);
+
+        //TODO Move this somewhere else
+        Cursor.visible = false;
 
         _firstCloneVat.GetComponent<CloneVat>()?.Select();
 
