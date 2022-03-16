@@ -12,7 +12,10 @@ public class PlayerActions : MonoBehaviour
     Player _player;
     Collider2D _playerCollider;
 
-    private void Start()
+    //UI for prompts
+    [SerializeField] GameObject _promptCanvasObject;
+
+    private void Awake()
     {
         _input = GetComponent<PlayerInput>();
         _player = GetComponent<Player>();
