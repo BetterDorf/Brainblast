@@ -10,17 +10,19 @@ public class PlayerActions : MonoBehaviour
     EventScriptableObject _playerActionEvent;
 
     Player _player;
+    PlayerMovement _movement;
     Collider2D _playerCollider;
 
     private void Awake()
     { 
         _player = GetComponent<Player>();
+        _movement = GetComponent<PlayerMovement>();
         _playerCollider = GetComponent<Collider2D>();
     }
 
     public void DieInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving)
         {
             _playerActionEvent.TriggerEvent();
             DieAction();
@@ -34,7 +36,7 @@ public class PlayerActions : MonoBehaviour
 
     public void ExplodeInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving)
         {
             _playerActionEvent.TriggerEvent();
             StartCoroutine(ExplodeAction());
@@ -68,7 +70,7 @@ public class PlayerActions : MonoBehaviour
 
     public void ResetInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && _movement.StoppedMoving)
             ResetAction();
     }
 

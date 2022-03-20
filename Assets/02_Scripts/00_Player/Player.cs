@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     Collider2D _collider2D;
+    PlayerMovement _movement;
+
+    [SerializeField] EventScriptableObject _playerActEvent;
 
     [Header("Level-Specific Variables")]
-    [Tooltip("How many lives you get to do the puzzles, including the first one")]
+    [Tooltip("How many lives you get to do the puzzle, including the first life")]
     [SerializeField] int _lives = 2;
+    [Tooltip("Where the player first spawns")]
     [SerializeField] GameObject _firstCloneVat;
 
     //Player State
@@ -24,12 +28,18 @@ public class Player : MonoBehaviour
     }
 
     [Header("General Variables")]
-    [SerializeField] float _acidTime = 1.0f;
+    [SerializeField] int _acidTime = 7;
     [SerializeField] float _respawnTime = 0.25f;
+    int _acidTurnsLeft;
 
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
+
+    //UI
     [SerializeField] GameObject _lifeCanvasObject;
     GameObject _lifeCanvas;
+
+    [SerializeField] GameObject _countCanvas;
+
 
     //Corpses
     [SerializeField] GameObject _corpse;
@@ -40,6 +50,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _movement = GetComponent<PlayerMovement>();
         _collider2D = GetComponent<Collider2D>();
 
         //TODO do this another way
@@ -48,6 +59,10 @@ public class Player : MonoBehaviour
         //TODO Move this somewhere else
         Cursor.visible = false;
 
+        //Link the player actions with the acid countdown
+        _playerActEvent.OnEventTriggered += CountDownAcid;
+
+        //Make sure the player has a start point
         if (!_firstCloneVat)
             Debug.LogError("There must be a starting vat assigned");
 
@@ -78,11 +93,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_respawnTime);
 
         //Change the state to allow the player to move again
-        _state = PlayerState.Alive;
+         _state = PlayerState.Alive;
 
         //TODO update visuals
         GetComponentInChildren<SpriteRenderer>().enabled = true;
-
     }
 
     void UpdateLifeCounter()
@@ -95,7 +109,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Melt()
     {
-        if (_state == PlayerState.Dead)
+        if (_state == PlayerState.Dead || !_movement.StoppedMoving)
             return;
 
         Die();
@@ -116,33 +130,47 @@ public class Player : MonoBehaviour
 
     void Die()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
 
+        //Make the player dead
         _state = PlayerState.Dead;
+
+        //Make the countdown ui disappear
+        _countCanvas.SetActive(false);
 
         StartCoroutine(Spawn());
     }
 
     public void ApplyAcid()
     {
+        //don't do anything if the player is already melting
         if (_state == PlayerState.Melting)
             return;
 
-        StartCoroutine(DelayedDie(_state = PlayerState.Melting, _acidTime));
+        //Make the player start melting
+        _state = PlayerState.Melting;
+        _acidTurnsLeft = _acidTime;
+
+        //Update the canvas's visuals
+        _countCanvas.SetActive(true);
+        _countCanvas.GetComponentInChildren<Text>().text = _acidTurnsLeft.ToString();
     }
 
-    /// <summary>
-    /// Kill the player after a set time
-    /// </summary>
-    /// <param name="affliction">The state that the player must match to die</param>
-    IEnumerator DelayedDie(PlayerState affliction, float time)
+    void CountDownAcid()
     {
-        yield return new WaitForSeconds(time);
+        //Don't do anything if the player isn't melting
+        if (_state != PlayerState.Melting)
+            return;
 
-        if (_state == affliction)
-        {
+        //Decrease the turns left
+        _acidTurnsLeft -= 1;
+
+        //Update the canvas
+        _countCanvas.GetComponentInChildren<Text>().text = _acidTurnsLeft.ToString();
+        
+        //die if we reach zero
+        if (_acidTurnsLeft == 0)
             Kill();
-        }
     }
 
     /// <summary>

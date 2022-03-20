@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     //Wether the player should be reading inputs
     bool _canRegisterInput = true;
 
+    bool _stoppedMoving = true;
+    public bool StoppedMoving { get { return _stoppedMoving; } }
+
     //The input the player wants to do
     Vector2 _registeredInput = Vector2.zero;
     //The input the character is currently performing
@@ -82,9 +85,6 @@ public class PlayerMovement : MonoBehaviour
         //Flush out the buffered input
         _registeredInput = Vector2.zero;
 
-        //Security to make sure we aren't moving anymore
-        StopAllCoroutines();
-
         //Move in only a single axis
         if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
         {
@@ -105,6 +105,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        //Security to make sure we aren't moving anymore
+        StopAllCoroutines();
+
         //Inform the world that we took an action
         _playerActionEvent.TriggerEvent();
 
@@ -121,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         _canMove = false;
         _canRegisterInput = false;
         _canInterrupt = false;
+        _stoppedMoving = false;
 
         Vector3 direction = goal - transform.position;
 
@@ -130,6 +134,16 @@ public class PlayerMovement : MonoBehaviour
         //Move to the goal
         do
         {
+            //Make sure we are alive
+            if(_player.State == Player.PlayerState.Dead)
+            {
+                _stoppedMoving = true;
+                _canInterrupt = true;
+                _canMove = true;
+                _canRegisterInput = true;
+                yield break;
+            }
+
             //Displace the character
             transform.position += direction * Time.deltaTime * _speed;
 
@@ -149,6 +163,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Snap to our goal
         transform.position = goal;
+
+        _stoppedMoving = true;
+        yield return null;
 
         //mark a pause that can be interrupted
         _canInterrupt = true;
