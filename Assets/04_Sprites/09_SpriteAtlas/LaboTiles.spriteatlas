@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LaboTiles
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 99acdac4f9794874089ab5015a1f085a, type: 3}
+    - {fileID: 2800000, guid: 5f637c4d92a4ec7459d2b26d6ddd3ece, type: 3}
+    - {fileID: 2800000, guid: 8358169797184e546983efb94270530d, type: 3}
+    - {fileID: 2800000, guid: b7016f3a068d31b4687cb4e08ceba1d2, type: 3}
+    - {fileID: 2800000, guid: f3d928cb2017fb349a8cc3d62beddf0d, type: 3}
+    - {fileID: 2800000, guid: b5f0c09bf852c36418e0e1fcd4b74eab, type: 3}
+    - {fileID: 2800000, guid: dd1fc8e8d9c64594f9464eb33e0bc5d2, type: 3}
+    - {fileID: 2800000, guid: 5a569ca106765514c82709c746210d36, type: 3}
+    - {fileID: 2800000, guid: bce3bfd675d41a14d81c3f63051b2fda, type: 3}
+    - {fileID: 2800000, guid: e458cf49dadbb6a4fac91e62410aec46, type: 3}
+    - {fileID: 2800000, guid: 28bceab0110be9b489049e653e57fada, type: 3}
+    - {fileID: 2800000, guid: de4600fa9a8c2c940ba77d667dd808ae, type: 3}
+    - {fileID: 2800000, guid: 274504fa519323b478675aaa55405099, type: 3}
+    - {fileID: 2800000, guid: f9a4d2654bd60414486b5e6d09d26e31, type: 3}
+    - {fileID: 2800000, guid: 3c65f56e2a4ce644cb9ce196ec0e7645, type: 3}
+    - {fileID: 2800000, guid: f4593b95babb2c04282ccc35493efa5a, type: 3}
+    - {fileID: 2800000, guid: c09ce5cf8ec16484bb04d1fc0ccb0c69, type: 3}
+    - {fileID: 2800000, guid: 59191cd34eb2687488494d53d7932780, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 28bceab0110be9b489049e653e57fada, type: 3}
+  - {fileID: 21300000, guid: 5a569ca106765514c82709c746210d36, type: 3}
+  - {fileID: 21300000, guid: 59191cd34eb2687488494d53d7932780, type: 3}
+  - {fileID: 21300000, guid: 99acdac4f9794874089ab5015a1f085a, type: 3}
+  - {fileID: 21300000, guid: f9a4d2654bd60414486b5e6d09d26e31, type: 3}
+  - {fileID: 21300000, guid: f4593b95babb2c04282ccc35493efa5a, type: 3}
+  - {fileID: 21300000, guid: bce3bfd675d41a14d81c3f63051b2fda, type: 3}
+  - {fileID: 21300000, guid: 8358169797184e546983efb94270530d, type: 3}
+  - {fileID: 21300000, guid: dd1fc8e8d9c64594f9464eb33e0bc5d2, type: 3}
+  - {fileID: 21300000, guid: e458cf49dadbb6a4fac91e62410aec46, type: 3}
+  - {fileID: 21300000, guid: b7016f3a068d31b4687cb4e08ceba1d2, type: 3}
+  - {fileID: 21300000, guid: de4600fa9a8c2c940ba77d667dd808ae, type: 3}
+  - {fileID: 21300000, guid: 274504fa519323b478675aaa55405099, type: 3}
+  - {fileID: 21300000, guid: b5f0c09bf852c36418e0e1fcd4b74eab, type: 3}
+  - {fileID: 21300000, guid: f3d928cb2017fb349a8cc3d62beddf0d, type: 3}
+  - {fileID: 21300000, guid: 5f637c4d92a4ec7459d2b26d6ddd3ece, type: 3}
+  - {fileID: 21300000, guid: 3c65f56e2a4ce644cb9ce196ec0e7645, type: 3}
+  - {fileID: 21300000, guid: c09ce5cf8ec16484bb04d1fc0ccb0c69, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Intersection_droite
+  - Fin_haut
+  - Tile_unie
+  - Coin_bas1
+  - Mur_horizontal
+  - Tile_carreaus_grise
+  - Intersection_bas
+  - Coin_haut1
+  - Fin_gauche
+  - Intersection_croix
+  - Coin_haut2
+  - Intersection_gauche
+  - Intersection_haut
+  - Fin_droite
+  - Fin_bas
+  - Coin_bas2
+  - Mur_vertical
+  - Tile_carreaux_blanche
+  m_RenderDataMap: {}
+  m_Tag: LaboTiles
+  m_IsVariant: 0
