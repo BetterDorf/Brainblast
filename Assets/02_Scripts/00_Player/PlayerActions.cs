@@ -6,18 +6,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerActions : MonoBehaviour
 {
-    [SerializeField] float _interactRadius = 1.0f;
+    [SerializeField]
+    EventScriptableObject _playerActionEvent;
 
-    PlayerInput _input;
     Player _player;
     Collider2D _playerCollider;
 
-    //UI for prompts
-    [SerializeField] GameObject _promptCanvasObject;
-
     private void Awake()
-    {
-        _input = GetComponent<PlayerInput>();
+    { 
         _player = GetComponent<Player>();
         _playerCollider = GetComponent<Collider2D>();
     }
@@ -25,24 +21,39 @@ public class PlayerActions : MonoBehaviour
     public void DieInput(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
-            _player.Kill();
-    }
-
-    public void ExplodeCorpsesInput(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
         {
-            StartCoroutine(ExplodeCorpses());
+            _playerActionEvent.TriggerEvent();
+            DieAction();
         }
     }
 
-    IEnumerator ExplodeCorpses()
+    void DieAction()
+    {
+        _player.Kill();
+    }
+
+    public void ExplodeInput(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
+        {
+            _playerActionEvent.TriggerEvent();
+            StartCoroutine(ExplodeAction());
+        }
+    }
+
+    IEnumerator ExplodeAction()
     {
         //grab corpses
         List<GameObject> corpses = _player.Corpses;
 
         //Remove null gameObjects
         corpses.RemoveAll(x => !x);
+
+        //Die before the explosion if we have no corpse
+        if (corpses.Count == 0)
+        {
+            DieAction();
+        }
 
         //Explode the corpses
         foreach (GameObject corpse in corpses)
@@ -55,47 +66,13 @@ public class PlayerActions : MonoBehaviour
         _player.ResetCorpses();
     }
 
-    public void InteractInput(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed && _player.State != Player.PlayerState.Dead)
-            Interact();
-    }
-
-    void Interact()
-    {
-        Collider2D[] colliders =
-        Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), _interactRadius);
-
-        Interactable closestInteractable = null;
-        float distance = _interactRadius + 1.0f;
-
-        //Figure out the closest interactable in range
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider != _playerCollider && collider.Distance(_playerCollider).distance < distance)
-            {
-                Interactable interactable;
-                if (collider.TryGetComponent(out interactable))
-                {
-                    closestInteractable = interactable;
-                }
-            }
-        }
-
-        //Interact with the closest interactable
-        if  (closestInteractable != null)
-        {
-            closestInteractable.Interact();
-        }
-    }
-
     public void ResetInput(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
-            ResetLevel();
+            ResetAction();
     }
 
-    void ResetLevel()
+    void ResetAction()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

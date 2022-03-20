@@ -25,7 +25,7 @@ public class Explosion : MonoBehaviour
         RaycastHit2D raycastHit2D = Physics2D.Raycast(
             new Vector2(transform.position.x, transform.position.y),
             new Vector2(collision.transform.position.x- transform.position.x, collision.transform.position.y -transform.position.y),
-            Mathf.Infinity, 1 << LayerMask.NameToLayer("Default"));
+            Mathf.Infinity, ~LayerMask.GetMask("Water", "Ignore Raycast"));
         if (raycastHit2D.transform != collision.transform)
             return;
 

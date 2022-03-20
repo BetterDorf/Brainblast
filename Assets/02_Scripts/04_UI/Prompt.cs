@@ -9,6 +9,7 @@ public class Prompt : MonoBehaviour
     [Header("Imgs for different inputs")]
     [SerializeField] Sprite _keyboardImage;
     [SerializeField] Sprite _gamepadImage;
+    [SerializeField] Sprite _psImage;
 
     //The image to change
     Image _image;
@@ -16,21 +17,28 @@ public class Prompt : MonoBehaviour
     private void Start()
     {
         _image = GetComponentInChildren<Image>();
-        UpdatePrompt(true);
+        UpdatePrompt();
     }
 
-    public void UpdatePrompt(bool defaultImg)
+    public void UpdatePrompt(PromptsUpdater.Device device = PromptsUpdater.Device.Keyboard)
     {
         if (_image == null)
             return;
 
-        if (defaultImg)
+        switch(device)
         {
-            _image.sprite = _keyboardImage;
-        }
-        else
-        {
-            _image.sprite = _gamepadImage;
+            case PromptsUpdater.Device.Keyboard:
+                _image.sprite = _keyboardImage;
+                break;
+            case PromptsUpdater.Device.Xbox:
+                _image.sprite = _gamepadImage;
+                break;
+            case PromptsUpdater.Device.Ps:
+                _image.sprite = _psImage;
+                break;
+            default:
+                _image.sprite = _keyboardImage;
+                break;
         }
     }
 }

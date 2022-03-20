@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    Collider2D _collider2D;
+
     [Header("Level-Specific Variables")]
     [Tooltip("How many lives you get to do the puzzles, including the first one")]
     [SerializeField] int _lives = 2;
@@ -38,11 +40,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _collider2D = GetComponent<Collider2D>();
+
         //TODO do this another way
         _lifeCanvas = Instantiate(_lifeCanvasObject, Vector3.zero, Quaternion.identity);
 
         //TODO Move this somewhere else
         Cursor.visible = false;
+
+        if (!_firstCloneVat)
+            Debug.LogError("There must be a starting vat assigned");
 
         _firstCloneVat.GetComponent<CloneVat>()?.Select();
 
@@ -64,16 +71,18 @@ public class Player : MonoBehaviour
         if (_lives < 0)
             Lose();
 
+        //Spawn the player
+        if (_cloneVatReference)
+            transform.position = _cloneVatReference.GameObject.transform.position;
+
         yield return new WaitForSeconds(_respawnTime);
 
-        //Change the state
+        //Change the state to allow the player to move again
         _state = PlayerState.Alive;
 
         //TODO update visuals
         GetComponentInChildren<SpriteRenderer>().enabled = true;
 
-        //Spawn the player
-        transform.position = _cloneVatReference.GameObject.transform.position;
     }
 
     void UpdateLifeCounter()

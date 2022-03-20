@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lever : Interactable
 {
     //Wether this is activated or not
-    [SerializeField] protected bool _isOn = false;
+    protected bool _isOn = false;
 
     [Tooltip("Elements that this will activate")]
     [SerializeField] protected List<Activatable> _linked = new List<Activatable>();
@@ -45,9 +45,13 @@ public class Lever : Interactable
 
     public override bool Interact()
     {
+        //Switch the current state
         _isOn = !_isOn;
+
+        //Update the line going to the linked elements
         DrawLines(_isOn ? Color.green : Color.red);
 
+        //Update the powered state of each linked element
         foreach (Activatable activatable in _linked)
         {
             if (_isOn)
@@ -56,6 +60,7 @@ public class Lever : Interactable
                 activatable.PowerOff();
         }
 
+        //Confirm that we were interacted with
         return true;
     }
 }

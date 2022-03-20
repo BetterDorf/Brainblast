@@ -5,29 +5,157 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] EventScriptableObject _playerActionEvent;
+
     PlayerInput _input;
-    Rigidbody2D _rb;
     Player _player;
 
     [Header("Movement Settings")]
-    [SerializeField] float _acceleration = 1.0f;
-    [SerializeField] float _maxSpeed = 1.0f;
+    [Tooltip("How quickly the character goes from tile to tile")]
+    [SerializeField] float _speed;
+    [Tooltip("The time the character waits when the player goes in the same direction")]
+    [SerializeField] float _timeBetweenMoves;
+    [Tooltip("How quickly we start buffering the input of the player after we started moving")]
+    [SerializeField] float _bufferInputTreshold;
+
+    //Dictate wether the player can use its normal movement
+    bool _canMove = true;
+    //Wether the player can move by interrupting its wait time
+    bool _canInterrupt = true;
+    //Wether the player should be reading inputs
+    bool _canRegisterInput = true;
+
+    //The input the player wants to do
+    Vector2 _registeredInput = Vector2.zero;
+    //The input the character is currently performing
+    Vector2 _currentInput = Vector2.zero;
+
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
         _input = GetComponent<PlayerInput>();
         _player = GetComponent<Player>();
     }
 
     private void FixedUpdate()
     {
-        Vector2 movement;
-        if (_player.State == Player.PlayerState.Dead)
-            movement = Vector2.zero;
-        else
-            movement = _input.actions["Movement"].ReadValue<Vector2>();
+        //Check movement only when we can move
+        if (!_canRegisterInput || _player.State == Player.PlayerState.Dead)
+            return;
 
-        _rb.velocity = Vector2.Lerp(_rb.velocity, movement * _maxSpeed, _acceleration * Time.fixedDeltaTime);
+        //Interrupt the wait time if we decide to go in another direction
+        if (_canInterrupt && _registeredInput != Vector2.zero)
+        {
+            Move(_registeredInput);
+            return;
+        }
+
+        //Register the user's input if we can't move
+        Vector2 input = _input.actions["Movement"].ReadValue<Vector2>();
+        if (!_canMove)
+        {
+            //Only buffer input if another key was pressed
+            if (input != _currentInput)
+                _registeredInput = input;
+
+            return;
+        }
+
+        //read the value from the playerinput
+        Vector2 movement;
+        if (_registeredInput != Vector2.zero)
+        {
+            movement = _registeredInput;
+        }
+        else
+            movement = input;
+
+        //Start moving if there's an input
+        if (movement != Vector2.zero)
+        {
+            Move(movement);
+        }
+    }
+
+    void Move(Vector2 movement)
+    {
+        //Flush out the buffered input
+        _registeredInput = Vector2.zero;
+
+        //Security to make sure we aren't moving anymore
+        StopAllCoroutines();
+
+        //Move in only a single axis
+        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+        {
+            movement.y = 0;
+        }
+        else
+        {
+            movement.x = 0;
+        }
+
+        //We only want to have a 1 in a direction
+        movement.Normalize();
+
+        //Check if we can move in this direction
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, movement, 1.0f, LayerMask.GetMask("Walls", "Obstacle"));
+        if (hit2D)
+        {
+            return;
+        }
+
+        //Inform the world that we took an action
+        _playerActionEvent.TriggerEvent();
+
+        //Register which input we are now using
+        _currentInput = movement;
+
+        //Start the movement
+        StartCoroutine(GoTo(transform.position + (Vector3) movement));
+    }
+
+    IEnumerator GoTo(Vector3 goal)
+    {
+        //Block new movements while we are performing this one
+        _canMove = false;
+        _canRegisterInput = false;
+        _canInterrupt = false;
+
+        Vector3 direction = goal - transform.position;
+
+        float previousDistance, firstDistance, curDistance;
+        firstDistance = curDistance = Vector3.Distance(transform.position, goal);
+
+        //Move to the goal
+        do
+        {
+            //Displace the character
+            transform.position += direction * Time.deltaTime * _speed;
+
+            //update our progress
+            previousDistance = curDistance;
+            curDistance = Vector3.Distance(transform.position, goal);
+
+            //Start registering player input at half the distance
+            if (firstDistance / _bufferInputTreshold > curDistance)
+            {
+                _canRegisterInput = true;
+            }
+
+            //Pause for a frame
+            yield return null;
+        } while (curDistance < previousDistance); //as long as the distance to it keeps decreasing
+
+        //Snap to our goal
+        transform.position = goal;
+
+        //mark a pause that can be interrupted
+        _canInterrupt = true;
+        yield return new WaitForSeconds(_timeBetweenMoves);
+
+        //Reset the current performed input
+        _currentInput = Vector2.zero;
+        _canMove = true;
     }
 }

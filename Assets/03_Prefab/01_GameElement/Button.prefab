@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3936713207117107226}
   - component: {fileID: 2203989737030646325}
   - component: {fileID: 3522143294162007114}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isOn: 0
-  _linked:
-  - {fileID: 0}
+  _linked: []
   _line: {fileID: 2871565797221408393, guid: 92cd500feb7fd1544803579e4542fe86, type: 3}
-  _stayPressedForSeconds: 3
+  _playerActionEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
+  _stayPressedForTurns: 7
 --- !u!58 &3522143294162007114
 CircleCollider2D:
   m_ObjectHideFlags: 0

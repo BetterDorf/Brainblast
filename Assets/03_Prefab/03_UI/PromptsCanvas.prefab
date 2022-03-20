@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyboardImage: {fileID: 21300000, guid: 30cfeb9b07a3fd640bde9240471f4f1d, type: 3}
   _gamepadImage: {fileID: 21300000, guid: 557844920148e9f4eaace3d8e01a8a46, type: 3}
+  _psImage: {fileID: 21300000, guid: fc82d2ed66725a74e867f852d015e95e, type: 3}
 --- !u!1 &4718768432572905936
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyboardImage: {fileID: 21300000, guid: 99f737b85816f1747a35da7c22118f58, type: 3}
   _gamepadImage: {fileID: 21300000, guid: ba9ac0941af8d904eb75741ee350317c, type: 3}
+  _psImage: {fileID: 21300000, guid: dc5d4e12a9a825244aa95cfaf0835c29, type: 3}
 --- !u!1 &7588493673467345220
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyboardImage: {fileID: 21300000, guid: 1dfee382caf45544d9d3e2db279e3888, type: 3}
   _gamepadImage: {fileID: 21300000, guid: 7c24176e7d753fc47a9412ed144f684d, type: 3}
+  _psImage: {fileID: 21300000, guid: 452e71ddcb2c5784cbbfc9e0baddeb18, type: 3}
 --- !u!1 &8959387491939749878
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,8 +92,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7393732743617446129}
   - component: {fileID: -6036305288524402235}
-  - component: {fileID: 7393732743617446130}
   - component: {fileID: 7393732743617446131}
+  - component: {fileID: 7393732743617446130}
   - component: {fileID: 7393732743617446128}
   - component: {fileID: 7393732743617446133}
   - component: {fileID: 6645105751963239521}
@@ -133,27 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4d60e82cb9bc94da09d8dd8e857c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lives: 2
+  _lives: 4
   _firstCloneVat: {fileID: 0}
   _acidTime: 1.5
   _respawnTime: 0.25
   _cloneVatReference: {fileID: 11400000, guid: 742aadfc87167164e8e65cff23edd846, type: 2}
   _lifeCanvasObject: {fileID: 2323551847278867316, guid: ca55b1ca03f77fd45875554667619c07, type: 3}
   _corpse: {fileID: 6056471975898375808, guid: 36a6953358ee56a468954ffc2fec1f8c, type: 3}
---- !u!114 &7393732743617446130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7393732743617446142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3037b874db028469a46bed753cd136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactRadius: 1
-  _promptCanvasObject: {fileID: 6838105806515622736, guid: 52935dfccf844da4dbd719565d81f71f, type: 3}
 --- !u!114 &7393732743617446131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +201,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7393732743617446130}
         m_TargetAssemblyTypeName: PlayerActions, Assembly-CSharp
-        m_MethodName: ExplodeCorpsesInput
+        m_MethodName: ExplodeInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -227,22 +213,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4ff11477-4755-485a-849b-fcf15aa11d76
     m_ActionName: Gameplay/Explode[/Keyboard/l]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7393732743617446130}
-        m_TargetAssemblyTypeName: PlayerActions, Assembly-CSharp
-        m_MethodName: InteractInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5d8c4994-a50b-46cd-9e30-c5536e9ee772
-    m_ActionName: Gameplay/Interact[/Keyboard/j]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7393732743617446130}
@@ -280,6 +250,19 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7393732743617446130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393732743617446142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3037b874db028469a46bed753cd136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerActionEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
 --- !u!114 &7393732743617446128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,8 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2addd78669ebe4393e65cde360ee59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 10
-  _maxSpeed: 7
+  _playerActionEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
+  _speed: 5
+  _timeBetweenMoves: 0.075
 --- !u!50 &7393732743617446133
 Rigidbody2D:
   serializedVersion: 4
