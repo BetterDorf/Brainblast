@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5458744125350503256}
-  - component: {fileID: 4095521019502772427}
   - component: {fileID: 3548184017104899251}
+  - component: {fileID: 4095521019502772427}
   - component: {fileID: 5822432618939914364}
   m_Layer: 7
-  m_Name: Door
+  m_Name: Door_Horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3548184017104899251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804439813702811007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e548fdaed013040855c3597ee0d7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startOpen: 0
+  _openSprite: {fileID: 21300000, guid: 486c9b97d6aebca4a914921a31938443, type: 3}
 --- !u!212 &4095521019502772427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: -1999117185
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f2e5ed3f76e56f1489c2d40d3ba8f8bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96cd9dede32f3ca4486f91d7dbfe155a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,19 +98,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3548184017104899251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8804439813702811007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5e548fdaed013040855c3597ee0d7a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startOpen: 0
 --- !u!61 &5822432618939914364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 1.28}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 2

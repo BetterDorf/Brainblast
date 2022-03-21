@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Door : Activatable
 {
+    //Door logic
+    [Tooltip("Wether the door will be open at the start of the level. Makes the door close when activated")]
     [SerializeField] bool _startOpen = false;
     bool _isOpen = false;
     public bool IsOpen { get { return _isOpen; } }
 
     Collider2D _collider;
 
-    //For color change
-    Color _baseColor;
-    Color _openColor;
+    //Visuals
+    SpriteRenderer _sp;
+    Sprite _closedSprite;
+    [SerializeField] Sprite _openSprite;
 
     private void Start()
     {
-        _baseColor = GetComponent<SpriteRenderer>().color;
-        _openColor = new Color(_baseColor.r, _baseColor.g, _baseColor.b, _baseColor.a / 2.5f);
+        //Setup the visuals
+        _sp = GetComponent<SpriteRenderer>();
+        _closedSprite = _sp.sprite;
 
+        //Grab the collider
         _collider = GetComponent<Collider2D>();
 
+        //set the door to the correct start state
         _isOpen = _startOpen;
         UpdateDoor();
     }
@@ -30,13 +36,19 @@ public class Door : Activatable
     {
         if (_isOpen)
         {
-            GetComponent<SpriteRenderer>().color = _openColor;
+            //Change the visual
+            _sp.sprite = _openSprite;
+
+            //Change the physical properties
             _collider.enabled = false;
         }
         else
         {
+            //Change the visual
+            _sp.sprite = _closedSprite;
+
+            //Change the physical properties
             _collider.enabled = true;
-            GetComponent<SpriteRenderer>().color = _baseColor;
         }
     }
 
