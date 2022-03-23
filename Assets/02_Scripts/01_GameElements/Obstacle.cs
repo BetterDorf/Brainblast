@@ -11,8 +11,15 @@ public class Obstacle : Interactable
 
     public override bool ExplosionInteract()
     {
-        Destroy(gameObject);
+        StartCoroutine(DelayedDestroy());
 
         return true;
+    }
+
+    IEnumerator DelayedDestroy()
+    {
+        yield return null;
+
+        Destroy(gameObject);
     }
 }
