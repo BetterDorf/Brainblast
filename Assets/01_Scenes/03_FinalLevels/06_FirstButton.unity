@@ -180,6 +180,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6edae634a2d476e47b8846d944c8cb38, type: 3}
+--- !u!114 &224783505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7306112295167612447, guid: 6052941f531f76b42a8519d6073d383b, type: 3}
+  m_PrefabInstance: {fileID: 2145953997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e548fdaed013040855c3597ee0d7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &553043870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1259,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2203989737030646325, guid: fccf7b4d6e006f04e905e3ba45fb14c7, type: 3}
+      propertyPath: _linked.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203989737030646325, guid: fccf7b4d6e006f04e905e3ba45fb14c7, type: 3}
+      propertyPath: _linked.Array.data[0]
+      value: 
+      objectReference: {fileID: 224783505}
     - target: {fileID: 4314182513732493563, guid: fccf7b4d6e006f04e905e3ba45fb14c7, type: 3}
       propertyPath: m_Name
       value: Button
