@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
 
     //UI
+    [SerializeField] GameObject _loseCanvas;
     [SerializeField] GameObject _lifeCanvasObject;
     GameObject _lifeCanvas;
 
@@ -84,7 +85,10 @@ public class Player : MonoBehaviour
         _lives--;
         UpdateLifeCounter();
         if (_lives < 0)
+        {
             Lose();
+            yield break;
+        }
 
         //Spawn the player
         if (_cloneVatReference)
@@ -183,6 +187,6 @@ public class Player : MonoBehaviour
 
     void Lose()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Instantiate(_loseCanvas);
     }
 }
