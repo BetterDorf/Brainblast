@@ -20,6 +20,8 @@ public class PuzzleButton : Lever
     private void Start()
     {
         _playerActionEvent.OnEventTriggered += OnPlayerAct;
+
+        DrawLines(Color.red);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +51,9 @@ public class PuzzleButton : Lever
             //Set the ui
             _countCanvas.SetActive(true);
             _countCanvas.GetComponentInChildren<Text>().text = _turnsToUnpress.ToString();
+
+            //Play a sound
+            GetComponent<AudioSource>()?.Play();
         }
     }
 
@@ -91,6 +96,9 @@ public class PuzzleButton : Lever
                 {
                     activatable.PowerOff();
                 }
+
+                //Play a sound
+                GetComponent<AudioSource>()?.Play();
             }
         }
     }

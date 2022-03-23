@@ -32,6 +32,9 @@ public class CloneVat : Interactable
         //Cosmetic change
         GetComponent<SpriteRenderer>().color = Color.white;
 
+        //Play a sound
+        GetComponent<AudioSource>()?.Play();
+
         return true;
     }
 

@@ -60,6 +60,13 @@ public class Lever : Interactable
                 activatable.PowerOff();
         }
 
+        //Play a sound
+        GetComponent<AudioSource>()?.Play();
+
+        //Visual
+        if(GetComponent<SpriteRenderer>())
+            GetComponent<SpriteRenderer>().flipX = _isOn;
+
         //Confirm that we were interacted with
         return true;
     }
