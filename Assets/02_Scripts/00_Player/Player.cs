@@ -189,4 +189,9 @@ public class Player : MonoBehaviour
     {
         Instantiate(_loseCanvas);
     }
+
+    private void OnDestroy()
+    {
+        _playerActEvent.OnEventTriggered -= CountDownAcid;
+    }
 }

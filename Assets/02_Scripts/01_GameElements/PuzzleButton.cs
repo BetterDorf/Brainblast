@@ -94,4 +94,9 @@ public class PuzzleButton : Lever
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        _playerActionEvent.OnEventTriggered -= OnPlayerAct;
+    }
 }
