@@ -51,11 +51,11 @@ public class PlayerActions : MonoBehaviour
         //Remove null gameObjects
         corpses.RemoveAll(x => !x);
 
-        //Die before the explosion if we have no corpse
-        if (corpses.Count == 0)
-        {
-            DieAction();
-        }
+        ////Die before the explosion if we have no corpse
+        //if (corpses.Count == 0)
+        //{
+        //    DieAction();
+        //}
 
         //Explode the corpses
         foreach (GameObject corpse in corpses)

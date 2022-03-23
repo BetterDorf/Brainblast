@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerActionEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
   _speed: 5
-  _timeBetweenMoves: 0.075
+  _timeBetweenMoves: 0.01
   _bufferInputTreshold: 0
 --- !u!50 &7393732743617446133
 Rigidbody2D:
