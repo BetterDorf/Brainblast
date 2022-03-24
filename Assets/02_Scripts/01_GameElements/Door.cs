@@ -37,6 +37,7 @@ public class Door : Activatable
         if (_isOpen)
         {
             //Change the visual
+            _sp.color = Color.grey;
             _sp.sprite = _openSprite;
 
             //Change the physical properties
@@ -45,6 +46,7 @@ public class Door : Activatable
         else
         {
             //Change the visual
+            _sp.color = Color.white;
             _sp.sprite = _closedSprite;
 
             //Change the physical properties
