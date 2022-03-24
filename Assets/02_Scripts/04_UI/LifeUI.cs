@@ -117,7 +117,7 @@ public class LifeUI : MonoBehaviour
             text.color = new Color(0f, 0f, 0f, _bigTransparency);
         }
 
-        //hold the ui for x seconds before animating
+        //hold the ui for x seconds before animatingv
         yield return new WaitForSeconds(_waitFor);
 
         //Change the visual value for the animation
@@ -156,20 +156,20 @@ public class LifeUI : MonoBehaviour
     IEnumerator TransitionUI()
     {
         //Set the goal position for the next value text to be the current value position
-        Vector3 goalPosition = _curLife.position;
+         Vector3 goalPosition = _curLife.position;
         //remember the offset between them
         Vector3 offset = _curLife.position - _nextLife.position;
 
         //Shift the nextValue text towards its goal until it's close enough
         while(Vector3.Distance(goalPosition, _nextLife.position) > _arrivalMargin)
         {
-            //Lerp nextLife towards goal
-            _nextLife.position = Vector3.Lerp(_nextLife.position, goalPosition, Time.deltaTime * _transitionSpeed);
-            //Shift curLife by same amount
-            _curLife.position = _nextLife.position + offset;
-
             //Wait a frame
             yield return null;
+
+            //Lerp nextLife towards goal
+            _nextLife.position = Vector3.Lerp(_nextLife.position, goalPosition, Mathf.Min(Time.deltaTime, 0.05f) * _transitionSpeed);
+            //Shift curLife by same amount
+            _curLife.position = _nextLife.position + offset;
         }
 
         //Snap the position
