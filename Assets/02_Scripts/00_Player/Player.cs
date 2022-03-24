@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
 
     void UpdateLifeCounter()
     {
-        _lifeCanvas.GetComponentInChildren<Text>().text = "x" + _lives.ToString();
+        _lifeCanvas.GetComponentInChildren<LifeUI>().UpdateLives(_lives);
     }
 
     /// <summary>
