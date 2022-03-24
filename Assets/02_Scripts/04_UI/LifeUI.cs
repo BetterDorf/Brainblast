@@ -69,7 +69,7 @@ public class LifeUI : MonoBehaviour
             //Wait until we aren't updating the ui anymore
             yield return new WaitUntil(() => _updatingUI == false);
 
-            yield return StartCoroutine(ChangeUI(0));
+            yield return StartCoroutine(ChangeUI(_bufferedValues[0]));
             _bufferedValues.RemoveAt(0);
         }
     }
