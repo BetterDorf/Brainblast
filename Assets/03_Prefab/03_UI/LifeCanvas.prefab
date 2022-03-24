@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 2323551847278867307}
   - component: {fileID: 2323551847278867306}
   - component: {fileID: 2323551847278867317}
+  - component: {fileID: 3903755385911594912}
   m_Layer: 5
   m_Name: LifeCanvas
   m_TagString: Untagged
@@ -230,6 +231,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3903755385911594912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323551847278867316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c836b5e3457f4f04c8262ddeb8cc60c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bigSizeMult: 3
+  _transitionSpeed: 3
+  _arrivalMargin: 5
+  _holdFor: 0.5
+  _curLife: {fileID: 2323551847368239792}
+  _nextLife: {fileID: 2261735754076739751}
+  _lifeTransform: {fileID: 3545548252242358342}
 --- !u!1 &2323551847368239795
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +340,6 @@ GameObject:
   - component: {fileID: 2323551848252167069}
   - component: {fileID: 2323551848252167059}
   - component: {fileID: 2323551848252167058}
-  - component: {fileID: 4177696322748830857}
   m_Layer: 5
   m_Name: Life
   m_TagString: Untagged
@@ -388,25 +407,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4177696322748830857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2323551848252167068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c836b5e3457f4f04c8262ddeb8cc60c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bigSizeMult: 3
-  _transitionSpeed: 3
-  _arrivalMargin: 5
-  _holdFor: 0.5
-  _curLife: {fileID: 2323551847368239792}
-  _nextLife: {fileID: 2261735754076739751}
-  _lifeTransform: {fileID: 3545548252242358342}
 --- !u!1 &5088919064819961373
 GameObject:
   m_ObjectHideFlags: 0

@@ -90,6 +90,9 @@ public class LifeUI : MonoBehaviour
         //Convert int to string
         string newValue = newLives.ToString();
 
+        //Make a copy so we don't see the original disappearing
+        GameObject tempUI = Instantiate(_lifeTransform.gameObject, transform);
+
         //Bigify the ui
         _lifeTransform.anchoredPosition = Vector2.zero;
         _lifeTransform.localScale *= _bigSizeMult;
@@ -115,7 +118,10 @@ public class LifeUI : MonoBehaviour
         _curLife.position = _curLifeStartPosition;
         _nextLife.position = _nextLifeStartPosition;
 
+        //Destroy the temporary ui created
+        Destroy(tempUI);
 
+        //Stop animating
         _updatingUI = false;
     }
 
