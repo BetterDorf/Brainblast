@@ -244,8 +244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bigSizeMult: 3
+  _bigTransparency: 0.75
   _transitionSpeed: 3
   _arrivalMargin: 5
+  _waitFor: 0.2
   _holdFor: 0.5
   _curLife: {fileID: 2323551847368239792}
   _nextLife: {fileID: 2261735754076739751}
