@@ -69,7 +69,7 @@ public class LifeUI : MonoBehaviour
             //Wait until we aren't updating the ui anymore
             yield return new WaitUntil(() => _updatingUI == false);
 
-            yield return StartCoroutine(ChangeUI(0));
+            yield return StartCoroutine(ChangeUI(_bufferedValues[0]));
             _bufferedValues.RemoveAt(0);
         }
     }
@@ -89,6 +89,9 @@ public class LifeUI : MonoBehaviour
 
         //Convert int to string
         string newValue = newLives.ToString();
+
+        //Make a copy so we don't see the original disappearing
+        GameObject tempUI = Instantiate(_lifeTransform.gameObject, transform);
 
         //Bigify the ui
         _lifeTransform.anchoredPosition = Vector2.zero;
@@ -115,7 +118,10 @@ public class LifeUI : MonoBehaviour
         _curLife.position = _curLifeStartPosition;
         _nextLife.position = _nextLifeStartPosition;
 
+        //Destroy the temporary ui created
+        Destroy(tempUI);
 
+        //Stop animating
         _updatingUI = false;
     }
 
