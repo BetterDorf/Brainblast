@@ -54,6 +54,16 @@ public class Door : Activatable
         }
     }
 
+    //Squash and squish things on this tile
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        collider.GetComponent<Player>()?.Melt();
+
+        if (collider.GetComponent<Corpse>())
+            Destroy(collider.gameObject);
+    }
+     
+     
     protected override void Activate()
     {
         _isOpen = !_isOpen;

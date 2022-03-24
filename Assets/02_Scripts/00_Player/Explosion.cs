@@ -13,12 +13,15 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Interactable interactable;
+        Interactable interactable = null;
+        Player player = null;
 
         //Check if it's interactable
         if (!collision.TryGetComponent(out interactable))
         {
-            return;
+            //Check it it's the player
+            if (!collision.TryGetComponent(out player))
+                return;
         }
 
         //Check if there's a wall in-between
@@ -29,7 +32,8 @@ public class Explosion : MonoBehaviour
         if (raycastHit2D.transform != collision.transform)
             return;
 
-        interactable.ExplosionInteract();
+        interactable?.ExplosionInteract();
+        player?.Melt();
     }
 
     IEnumerator DelayedDestroy()

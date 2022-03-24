@@ -61,7 +61,7 @@ public class PlayerActions : MonoBehaviour
         foreach (GameObject corpse in corpses)
         {
             yield return new WaitForSeconds(0.05f);
-            corpse.GetComponent<Corpse>().Explode();
+            corpse?.GetComponent<Corpse>()?.Explode();
         }
 
         //Reset the corpses
