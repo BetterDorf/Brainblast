@@ -39,6 +39,12 @@ public class PuzzleButton : Lever
                 {
                     activatable.PowerOn();
                 }
+
+                //Update the visual
+                GetComponent<SpriteRenderer>().sprite = _onSprite;
+
+                //Play a sound
+                GetComponent<AudioSource>()?.Play();
             }
 
             //set the button to pressed
@@ -51,9 +57,6 @@ public class PuzzleButton : Lever
             //Set the ui
             _countCanvas.SetActive(true);
             _countCanvas.GetComponentInChildren<Text>().text = _turnsToUnpress.ToString();
-
-            //Play a sound
-            GetComponent<AudioSource>()?.Play();
         }
     }
 
@@ -99,6 +102,9 @@ public class PuzzleButton : Lever
 
                 //Play a sound
                 GetComponent<AudioSource>()?.Play();
+
+                //Update the visual
+                GetComponent<SpriteRenderer>().sprite = _offSprite;
             }
         }
     }

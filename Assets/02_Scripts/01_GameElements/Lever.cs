@@ -11,8 +11,8 @@ public class Lever : Interactable
     [SerializeField] protected List<Activatable> _linked = new List<Activatable>();
 
     [Header("Visuals")]
-    [SerializeField] Sprite _onSprite;
-    [SerializeField] Sprite _offSprite;
+    [SerializeField] protected Sprite _onSprite;
+    [SerializeField] protected Sprite _offSprite;
 
     [Tooltip("Line object used to draw lines to the linked objects")]
     [SerializeField] GameObject _line;
