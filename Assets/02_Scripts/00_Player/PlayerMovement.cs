@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerInput _input;
     Player _player;
+    PlayerVisualsHandler _visuals;
 
     [Header("Movement Settings")]
     [Tooltip("How quickly the character goes from tile to tile")]
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _input = GetComponent<PlayerInput>();
         _player = GetComponent<Player>();
+        _visuals = GetComponentInChildren<PlayerVisualsHandler>();
     }
 
     private void FixedUpdate()
@@ -113,6 +115,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Start the movement
         StartCoroutine(GoTo(transform.position + (Vector3) movement));
+
+        //Update the visual
+        _visuals.StartWalkAnimation(movement);
     }
 
     IEnumerator GoTo(Vector3 goal)
