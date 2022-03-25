@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1999117185
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac48d781079ef174a92eaf31b9919b07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c14c0e7e99d0f6644b332495b5092641, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedCloneVatReference: {fileID: 11400000, guid: 742aadfc87167164e8e65cff23edd846, type: 2}
+  _offSprite: {fileID: 21300000, guid: a8816129f3e664742b2bfb72859f3123, type: 3}
+  _onSprite: {fileID: 21300000, guid: c14c0e7e99d0f6644b332495b5092641, type: 3}
 --- !u!58 &1675768622756824868
 CircleCollider2D:
   m_ObjectHideFlags: 0
