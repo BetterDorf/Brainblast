@@ -10,6 +10,10 @@ public class Lever : Interactable
     [Tooltip("Elements that this will activate")]
     [SerializeField] protected List<Activatable> _linked = new List<Activatable>();
 
+    [Header("Visuals")]
+    [SerializeField] Sprite _onSprite;
+    [SerializeField] Sprite _offSprite;
+
     [Tooltip("Line object used to draw lines to the linked objects")]
     [SerializeField] GameObject _line;
     List<GameObject> _lines = new List<GameObject>();
@@ -64,8 +68,8 @@ public class Lever : Interactable
         GetComponent<AudioSource>()?.Play();
 
         //Visual
-        if(GetComponent<SpriteRenderer>())
-            GetComponent<SpriteRenderer>().flipX = _isOn;
+        if (GetComponent<SpriteRenderer>())
+            GetComponent<SpriteRenderer>().sprite = _isOn ? _onSprite : _offSprite;
 
         //Confirm that we were interacted with
         return true;

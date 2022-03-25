@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerInput _input;
     Player _player;
+    PlayerVisualsHandler _visuals;
 
     [Header("Movement Settings")]
     [Tooltip("How quickly the character goes from tile to tile")]
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _input = GetComponent<PlayerInput>();
         _player = GetComponent<Player>();
+        _visuals = GetComponentInChildren<PlayerVisualsHandler>();
     }
 
     private void FixedUpdate()
@@ -108,14 +110,14 @@ public class PlayerMovement : MonoBehaviour
         //Security to make sure we aren't moving anymore
         StopAllCoroutines();
 
-        //Inform the world that we took an action
-        _playerActionEvent.TriggerEvent();
-
         //Register which input we are now using
         _currentInput = movement;
 
         //Start the movement
         StartCoroutine(GoTo(transform.position + (Vector3) movement));
+
+        //Update the visual
+        _visuals.StartWalkAnimation(movement);
     }
 
     IEnumerator GoTo(Vector3 goal)
@@ -145,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //Displace the character
-            transform.position += direction * Time.deltaTime * _speed;
+            transform.position += direction * Mathf.Min(Time.deltaTime, 0.03f) * _speed;
 
             //update our progress
             previousDistance = curDistance;
@@ -163,6 +165,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Snap to our goal
         transform.position = goal;
+
+        //Inform the world that we took an action
+        _playerActionEvent.TriggerEvent();
 
         _stoppedMoving = true;
         yield return null;
