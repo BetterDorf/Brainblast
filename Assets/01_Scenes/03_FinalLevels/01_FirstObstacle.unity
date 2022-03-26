@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
       propertyPath: _lives
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
       propertyPath: _firstCloneVat
