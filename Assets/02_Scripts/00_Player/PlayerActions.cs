@@ -22,7 +22,7 @@ public class PlayerActions : MonoBehaviour
 
     public void DieInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving && !GameManager.PAUSED)
         {
             _playerActionEvent.TriggerEvent();
             DieAction();
@@ -37,7 +37,7 @@ public class PlayerActions : MonoBehaviour
 
     public void ExplodeInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving)
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving && !GameManager.PAUSED)
         {
             _playerActionEvent.TriggerEvent();
             StartCoroutine(ExplodeAction());
@@ -72,7 +72,7 @@ public class PlayerActions : MonoBehaviour
 
     public void ResetInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && _movement.StoppedMoving)
+        if (callbackContext.performed && _movement.StoppedMoving && !GameManager.PAUSED)
             ResetAction();
     }
 

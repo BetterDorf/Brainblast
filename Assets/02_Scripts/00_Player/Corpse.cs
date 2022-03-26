@@ -15,12 +15,14 @@ public class Corpse : MonoBehaviour
     }
 
     /// <summary>
-    /// Create an explosion object and destroy themselves
+    /// Create the explosions and destroy themselves
     /// </summary>
     public void Explode()
     {
+        //Create first explosion
         Instantiate(_explosionObject, transform.position, Quaternion.identity);
 
+        //Destroy ourselves
         Destroy(gameObject);
     }
 }
