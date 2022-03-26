@@ -57,6 +57,20 @@ public class PlayerMovement : MonoBehaviour
 
         //Register the user's input if we can't move
         Vector2 input = _input.actions["Movement"].ReadValue<Vector2>();
+
+        //Move in only a single axis
+        if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+        {
+            input.y = 0;
+        }
+        else
+        {
+            input.x = 0;
+        }
+
+        //We only want to have a 1 in a direction
+        input.Normalize();
+
         if (!_canMove)
         {
             //Only buffer input if another key was pressed
@@ -86,19 +100,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //Flush out the buffered input
         _registeredInput = Vector2.zero;
-
-        //Move in only a single axis
-        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
-        {
-            movement.y = 0;
-        }
-        else
-        {
-            movement.x = 0;
-        }
-
-        //We only want to have a 1 in a direction
-        movement.Normalize();
 
         //Check if we can move in this direction
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, movement, 1.0f, LayerMask.GetMask("Walls", "Obstacle"));
@@ -166,10 +167,11 @@ public class PlayerMovement : MonoBehaviour
         //Snap to our goal
         transform.position = goal;
 
+        _stoppedMoving = true;
+
         //Inform the world that we took an action
         _playerActionEvent.TriggerEvent();
 
-        _stoppedMoving = true;
         yield return null;
 
         //mark a pause that can be interrupted

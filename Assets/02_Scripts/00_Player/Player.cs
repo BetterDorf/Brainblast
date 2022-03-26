@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [Header("Level-Specific Variables")]
     [Tooltip("How many lives you get to do the puzzle, including the first life")]
     [SerializeField] int _lives = 2;
+    public int Lives { get { return _lives; } }
     [Tooltip("Where the player first spawns")]
     [SerializeField] GameObject _firstCloneVat;
 
@@ -40,7 +41,6 @@ public class Player : MonoBehaviour
     GameObject _lifeCanvas;
 
     [SerializeField] GameObject _countCanvas;
-
 
     //Corpses
     [SerializeField] GameObject _corpse;
@@ -113,8 +113,10 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Melt()
     {
-        if (_state == PlayerState.Dead || !_movement.StoppedMoving)
+        if (_state == PlayerState.Dead)
+        {
             return;
+        }    
 
         Die();
     }

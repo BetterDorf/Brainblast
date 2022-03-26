@@ -102,9 +102,15 @@ public class LifeUI : MonoBehaviour
 
         //Convert int to string
         string newValue = newLives.ToString();
+        string oldValue = _curLife.GetComponent<Text>().text;
+
+        //Change the visual value for the animation
+        _nextLife.GetComponent<Text>().text = newValue;
 
         //Make a copy so we don't see the original disappearing
+        _curLife.GetComponent<Text>().text = newValue;
         GameObject tempUI = Instantiate(_lifeTransform.gameObject, transform);
+        _curLife.GetComponent<Text>().text = oldValue;
 
         //Bigify the ui
         _lifeTransform.anchoredPosition = Vector2.zero;
@@ -117,11 +123,8 @@ public class LifeUI : MonoBehaviour
             text.color = new Color(0f, 0f, 0f, _bigTransparency);
         }
 
-        //hold the ui for x seconds before animatingv
+        //hold the ui for x seconds before animating
         yield return new WaitForSeconds(_waitFor);
-
-        //Change the visual value for the animation
-        _nextLife.GetComponent<Text>().text = newValue;
 
         //Animate the change
         yield return StartCoroutine(TransitionUI());

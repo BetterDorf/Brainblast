@@ -31,7 +31,8 @@ public class PlayerActions : MonoBehaviour
 
     void DieAction()
     {
-        _player.Kill();
+        if (_player.Lives != 0)
+            _player.Kill();
     }
 
     public void ExplodeInput(InputAction.CallbackContext callbackContext)
