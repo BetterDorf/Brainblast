@@ -1802,6 +1802,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
+      propertyPath: _smoke
+      value: 
+      objectReference: {fileID: 519487842767087095, guid: b5369e491f4392046ab41db637828339, type: 3}
+    - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
       propertyPath: _firstCloneVat
       value: 
       objectReference: {fileID: 1993208149}

@@ -20,7 +20,7 @@ public class Lever : Interactable
 
     private void Start()
     {
-        DrawLines(Color.red);
+        //DrawLines(Color.red);
     }
 
     //Draw lines to the linked objects
@@ -53,7 +53,7 @@ public class Lever : Interactable
         _isOn = !_isOn;
 
         //Update the line going to the linked elements
-        DrawLines(_isOn ? Color.green : Color.red);
+        //DrawLines(_isOn ? Color.green : Color.red);
 
         //Update the powered state of each linked element
         foreach (Activatable activatable in _linked)

@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _respawnTime = 0.25f;
     int _acidTurnsLeft;
 
+    [Header("References")]
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
 
     //UI
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
     List<GameObject> _corpses = new List<GameObject>();
     public List<GameObject> Corpses { get { return _corpses; } }
     public void ResetCorpses() { _corpses = new List<GameObject>(); }
+
+    [SerializeField] GameObject _smoke;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +97,11 @@ public class Player : MonoBehaviour
         if (_cloneVatReference)
             transform.position = _cloneVatReference.GameObject.transform.position;
 
-        yield return new WaitForSeconds(_respawnTime);
+        yield return new WaitForSeconds(_respawnTime / 2.0f);
+
+        Instantiate(_smoke, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(_respawnTime / 2.0f);
 
         //Change the state to allow the player to move again
          _state = PlayerState.Alive;
@@ -140,6 +147,9 @@ public class Player : MonoBehaviour
 
         //Make the player dead
         _state = PlayerState.Dead;
+
+        //Make smoke appear
+        Instantiate(_smoke, transform.position, Quaternion.identity);
 
         //Make the countdown ui disappear
         _countCanvas.SetActive(false);
