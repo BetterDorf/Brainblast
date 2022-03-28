@@ -5,17 +5,24 @@ using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
+    bool _isOn = false;
+
     public void OnPause(InputAction.CallbackContext callbackContext)
     {
         if(callbackContext.performed)
         {
             if (GameManager.PAUSED)
             {
-                //Unpause the game
-                GameManager.UNPAUSE();
+                if (_isOn)
+                {
+                    //Unpause the game
+                    GameManager.UNPAUSE();
 
-                //Hide the pause menu
-                SetActiveChildren(false);
+                    //Hide the pause menu
+                    SetActiveChildren(false);
+
+                    _isOn = false;
+                }
             }
             else
             {
@@ -24,6 +31,8 @@ public class PauseMenu : MonoBehaviour
 
                 //Show the pause menu
                 SetActiveChildren(true);
+
+                _isOn = true;
             }
         }
     }

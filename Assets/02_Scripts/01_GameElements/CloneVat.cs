@@ -7,6 +7,13 @@ public class CloneVat : Interactable
     [SerializeField] ObjectReferenceScriptableObject _selectedCloneVatReference;
     bool _isSelected = false;
 
+    Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private void Start()
     {
         if (!_isSelected)
@@ -30,7 +37,7 @@ public class CloneVat : Interactable
         _selectedCloneVatReference.OnReferenceChanged += DeSelect;
 
         //Cosmetic change
-        GetComponent<SpriteRenderer>().color = Color.white;
+        _animator.SetBool("isOn", _isSelected);
 
         //Play a sound
         GetComponent<AudioSource>()?.Play();
@@ -44,7 +51,7 @@ public class CloneVat : Interactable
         _isSelected = false;
 
         //Cosmetic change
-        GetComponent<SpriteRenderer>().color = Color.grey;
+        _animator.SetBool("isOn", _isSelected);
     }
 
     private void OnDestroy()

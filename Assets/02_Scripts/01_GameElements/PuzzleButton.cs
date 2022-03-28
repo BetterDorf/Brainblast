@@ -21,7 +21,7 @@ public class PuzzleButton : Lever
     {
         _playerActionEvent.OnEventTriggered += OnPlayerAct;
 
-        DrawLines(Color.red);
+        //DrawLines(Color.red);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,13 +32,19 @@ public class PuzzleButton : Lever
             //Turn the button on
             if (!_isOn)
             {
-                DrawLines(Color.green);
+                //DrawLines(Color.green);
 
                 //Activate each element
                 foreach (Activatable activatable in _linked)
                 {
                     activatable.PowerOn();
                 }
+
+                //Update the visual
+                GetComponent<SpriteRenderer>().sprite = _onSprite;
+
+                //Play a sound
+                GetComponent<AudioSource>()?.Play();
             }
 
             //set the button to pressed
@@ -51,9 +57,6 @@ public class PuzzleButton : Lever
             //Set the ui
             _countCanvas.SetActive(true);
             _countCanvas.GetComponentInChildren<Text>().text = _turnsToUnpress.ToString();
-
-            //Play a sound
-            GetComponent<AudioSource>()?.Play();
         }
     }
 
@@ -86,7 +89,7 @@ public class PuzzleButton : Lever
             {
                 _isOn = false;
 
-                DrawLines(Color.red);
+                //DrawLines(Color.red);
 
                 //Deactivate the ui
                 _countCanvas.SetActive(false);
@@ -99,6 +102,9 @@ public class PuzzleButton : Lever
 
                 //Play a sound
                 GetComponent<AudioSource>()?.Play();
+
+                //Update the visual
+                GetComponent<SpriteRenderer>().sprite = _offSprite;
             }
         }
     }
