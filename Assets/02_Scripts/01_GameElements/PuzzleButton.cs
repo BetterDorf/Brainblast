@@ -20,8 +20,13 @@ public class PuzzleButton : Lever
     private void Start()
     {
         _playerActionEvent.OnEventTriggered += OnPlayerAct;
+        _revealAction.OnValueChanged += OnDrawChange;
+    }
 
-        //DrawLines(Color.red);
+    private void OnDestroy()
+    {
+        _revealAction.OnValueChanged -= OnDrawChange;
+        _playerActionEvent.OnEventTriggered -= OnPlayerAct;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +37,8 @@ public class PuzzleButton : Lever
             //Turn the button on
             if (!_isOn)
             {
-                //DrawLines(Color.green);
+                //Update the lines
+                UpdateLines(_onColor);
 
                 //Activate each element
                 foreach (Activatable activatable in _linked)
@@ -89,7 +95,7 @@ public class PuzzleButton : Lever
             {
                 _isOn = false;
 
-                //DrawLines(Color.red);
+                UpdateLines(_offColor);
 
                 //Deactivate the ui
                 _countCanvas.SetActive(false);
@@ -107,10 +113,5 @@ public class PuzzleButton : Lever
                 GetComponent<SpriteRenderer>().sprite = _offSprite;
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        _playerActionEvent.OnEventTriggered -= OnPlayerAct;
     }
 }

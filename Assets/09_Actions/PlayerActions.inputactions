@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Reveal",
+                    "type": "Button",
+                    "id": "98446079-c7b4-4991-b4d7-25d68f5e001e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Reset",
                     "type": "Button",
                     "id": "c9a04f7d-d278-4df9-af3f-293e8f434122",
@@ -263,17 +272,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8909373b-8449-4a27-bdcd-91cacfe75905",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Explode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "61f7edb3-9942-4bf2-908d-49d360606991",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -335,6 +333,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3ab0c34-d59a-472e-a18f-37f6b8fad7c9",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Reveal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2498caa3-351a-4055-b2f5-b6847f2cfac1",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Reveal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

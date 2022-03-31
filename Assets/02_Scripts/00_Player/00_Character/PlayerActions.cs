@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerActions : MonoBehaviour
 {
-    [SerializeField]
-    EventScriptableObject _playerActionEvent;
+    [SerializeField] EventScriptableObject _playerActionEvent;
+    [SerializeField] SharedIntScriptableObject _revealLinks;
 
     Player _player;
     PlayerMovement _movement;
@@ -68,6 +68,26 @@ public class PlayerActions : MonoBehaviour
 
         //Reset the corpses
         _player.ResetCorpses();
+    }
+
+    public void RevealInput(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving && !GameManager.PAUSED)
+        {
+            RevealAction();
+        }
+    }
+
+    void RevealAction()
+    {
+        if (_revealLinks.Value == 0)
+        {
+            _revealLinks.ChangeValue(1);
+        }
+        else
+        {
+            _revealLinks.ChangeValue(0);
+        }
     }
 
     public void ResetInput(InputAction.CallbackContext callbackContext)
