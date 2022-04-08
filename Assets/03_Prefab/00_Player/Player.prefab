@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerActEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
-  _lives: 4
+  _maxDeaths: 2
   _firstCloneVat: {fileID: 0}
   _acidTime: 7
   _respawnTime: 0.5
@@ -426,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerActionEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
   _revealLinks: {fileID: 11400000, guid: 67725a6786331184b90fa987e1aa8498, type: 2}
+  _timeBetweenExplosions: 0.4
 --- !u!114 &7393732743617446128
 MonoBehaviour:
   m_ObjectHideFlags: 0

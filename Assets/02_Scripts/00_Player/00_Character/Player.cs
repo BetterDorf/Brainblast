@@ -12,9 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField] EventScriptableObject _playerActEvent;
 
     [Header("Level-Specific Variables")]
-    [Tooltip("How many lives you get to do the puzzle, including the first life")]
-    [SerializeField] int _lives = 2;
-    public int Lives { get { return _lives; } }
+    [Tooltip("How many times you should die solving the level")]
+    [SerializeField] int _maxDeaths = 2;
+    public int MaxDeaths { get { return _maxDeaths; } }
+    //number of time the player has died playing the level
+    int _deaths = 0;
+
     [Tooltip("Where the player first spawns")]
     [SerializeField] GameObject _firstCloneVat;
 
@@ -57,11 +60,8 @@ public class Player : MonoBehaviour
         _movement = GetComponent<PlayerMovement>();
         _collider2D = GetComponent<Collider2D>();
 
-        //TODO do this another way
+        //Create the life canvas
         _lifeCanvas = Instantiate(_lifeCanvasObject, Vector3.zero, Quaternion.identity);
-
-        //TODO Move this somewhere else
-        Cursor.visible = false;
 
         //Link the player actions with the acid countdown
         _playerActEvent.OnEventTriggered += CountDownAcid;
@@ -85,13 +85,13 @@ public class Player : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
         //Lose a life
-        _lives--;
-        UpdateLifeCounter();
-        if (_lives < 0)
-        {
-            Lose();
-            yield break;
-        }
+        //_lives--;
+        //UpdateLifeCounter();
+        //if (_lives < 0)
+        //{
+        //    Lose();
+        //    yield break;
+        //}
 
         //Spawn the player
         if (_cloneVatReference)
@@ -108,11 +108,6 @@ public class Player : MonoBehaviour
 
         //TODO update visuals
         GetComponentInChildren<SpriteRenderer>().enabled = true;
-    }
-
-    void UpdateLifeCounter()
-    {
-        _lifeCanvas.GetComponentInChildren<LifeUI>().UpdateLives(_lives);
     }
 
     /// <summary>
@@ -143,10 +138,12 @@ public class Player : MonoBehaviour
 
     void Die()
     {
-        //StopAllCoroutines();
-
         //Make the player dead
         _state = PlayerState.Dead;
+        _deaths++;
+
+        //Update UI
+        _lifeCanvas?.GetComponentInChildren<LifeUI>().UpdateLives(_deaths);
 
         //Make smoke appear
         Instantiate(_smoke, transform.position, Quaternion.identity);

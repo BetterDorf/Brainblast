@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _power: 2
-  _time: 1
+  _time: 0.9
   _timeBeforeSpawn: 0.2
   _collider: {fileID: 8838114194768604272}
   _explosionObject: {fileID: 6736031338376091178}

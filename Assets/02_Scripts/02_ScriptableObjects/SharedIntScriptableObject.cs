@@ -17,4 +17,10 @@ public class SharedIntScriptableObject : ScriptableObject
 
         OnValueChanged?.Invoke(_value);
     }
+
+    public void Reset()
+    {
+        _value = 0;
+        OnValueChanged = null;
+    }
 }

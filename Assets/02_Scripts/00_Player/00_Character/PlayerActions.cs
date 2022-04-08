@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerActions : MonoBehaviour
 {
+    [Header("Scriptable objects refs")]
     [SerializeField] EventScriptableObject _playerActionEvent;
     [SerializeField] SharedIntScriptableObject _revealLinks;
 
@@ -13,11 +14,17 @@ public class PlayerActions : MonoBehaviour
     PlayerMovement _movement;
     Collider2D _playerCollider;
 
+    [Header("Gameplay variables")]
+    [Tooltip("Time to wait inbetween corpses explosion")]
+    [SerializeField] float _timeBetweenExplosions = 0.0f;
+
     private void Awake()
     { 
         _player = GetComponent<Player>();
         _movement = GetComponent<PlayerMovement>();
         _playerCollider = GetComponent<Collider2D>();
+
+        _revealLinks.Reset();
     }
 
     public void DieInput(InputAction.CallbackContext callbackContext)
@@ -31,8 +38,7 @@ public class PlayerActions : MonoBehaviour
 
     void DieAction()
     {
-        if (_player.Lives != 0)
-            _player.Kill();
+        _player.Kill();
     }
 
     public void ExplodeInput(InputAction.CallbackContext callbackContext)
@@ -61,9 +67,12 @@ public class PlayerActions : MonoBehaviour
         //Explode the corpses
         foreach (GameObject corpse in corpses)
         {
-            yield return new WaitForSeconds(0.05f);
+            //Explode the corpse if it isn't nulled
             if(corpse != null)
                 corpse.GetComponent<Corpse>()?.Explode();
+
+            //Wait a bit between explosions
+            yield return new WaitForSeconds(_timeBetweenExplosions);
         }
 
         //Reset the corpses

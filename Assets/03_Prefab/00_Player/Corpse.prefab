@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1879732700602531389}
   - component: {fileID: 159985282380039581}
   - component: {fileID: -7833887558077396082}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corpse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6056471975898375808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,6 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionObject: {fileID: 6736031338376091178, guid: 440c48414f9540242a84d7dfa01fd02a, type: 3}
+  _sr: {fileID: 6463424459236043805}
+  _sprites:
+  - {fileID: 21300000, guid: 05fc9dbbb3e82c045bbe47bec84474da, type: 3}
+  - {fileID: 21300000, guid: 6f428bd681f943a4e90887eb430567f3, type: 3}
+  - {fileID: 21300000, guid: e64c44c6c6dcf5e498bbd406860670db, type: 3}
+  - {fileID: 21300000, guid: fe4a4540f1a108f499637ca378ce6723, type: 3}
+  - {fileID: 21300000, guid: b6f395b1f6ac7814f9c97940eedea9aa, type: 3}
+  - {fileID: 21300000, guid: 8df8688422bc1174999afb7f96b4448d, type: 3}
 --- !u!50 &159985282380039581
 Rigidbody2D:
   serializedVersion: 4
