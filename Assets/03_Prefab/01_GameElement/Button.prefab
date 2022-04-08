@@ -227,21 +227,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1858199078396998977}
     m_Modifications:
-    - target: {fileID: 2140795943993862974, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2140795943993862974, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2140795943993862974, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2140795943993862975, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2140795944195660534, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
       propertyPath: m_Name
@@ -250,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 2140795944195660534, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140795944195660536, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2140795944195660538, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
       propertyPath: m_Pivot.x
@@ -329,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140795944195660538, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2140795944195660538, guid: 212f1b4100c54da489444fab799fe8a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

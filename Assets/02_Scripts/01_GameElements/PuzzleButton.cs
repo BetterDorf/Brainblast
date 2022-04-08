@@ -31,6 +31,9 @@ public class PuzzleButton : Lever
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Disable the UI if something is on the button
+        _countCanvas.SetActive(false);
+
         //Add the item to the list of items on the button
         if (++_itemsOnTheButton > 0)
         {
@@ -60,8 +63,7 @@ public class PuzzleButton : Lever
             //Reset the turns until the button gets unpressed
             _turnsToUnpress = _stayPressedForTurns;
             
-            //Set the ui
-            _countCanvas.SetActive(true);
+            //Update ui value
             _countCanvas.GetComponentInChildren<Text>().text = _turnsToUnpress.ToString();
         }
     }
@@ -71,6 +73,10 @@ public class PuzzleButton : Lever
         //Depress the button if nothing is on it anymore
         if (--_itemsOnTheButton == 0)
         {
+            //Set the ui
+            _countCanvas.SetActive(true);
+
+            //Change state
             _isPressed = false;
         }
     }
