@@ -31,7 +31,7 @@ public class Exit : MonoBehaviour
 
         if (collision.TryGetComponent(out player))
         {
-            player.ExitLevel();
+            player.Win();
         }
     }
 

@@ -15,9 +15,11 @@ public class Player : MonoBehaviour
     [Header("Level-Specific Variables")]
     [Tooltip("How many times you should die solving the level")]
     [SerializeField] int _maxDeaths = 2;
-    public int MaxDeaths { get { return _maxDeaths; } }
+
     //number of time the player has died playing the level
     int _deaths = 0;
+    //Number of turns the player took
+    int _turns = 0;
 
     [Tooltip("Where the player first spawns")]
     [SerializeField] GameObject _firstCloneVat;
@@ -43,8 +45,9 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
 
-    //UI
+    [Header("UI")]
     [SerializeField] GameObject _loseCanvas;
+    [SerializeField] GameObject _EndCanvas;
     [SerializeField] GameObject _lifeCanvasObject;
     GameObject _lifeCanvas;
 
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
         _lifeCanvas = Instantiate(_lifeCanvasObject, Vector3.zero, Quaternion.identity);
 
         //Link the player actions with the acid countdown
-        _playerActEvent.OnEventTriggered += CountDownAcid;
+        _playerActEvent.OnEventTriggered += OnPlayerAct;
 
         //Make sure the player has a start point
         if (!_firstCloneVat)
@@ -78,14 +81,14 @@ public class Player : MonoBehaviour
         _firstCloneVat.GetComponent<CloneVat>()?.Select();
 
         //Spawn for the first time
-        StartCoroutine(Spawn());
+        StartCoroutine(Spawn(true));
     }
 
     /// <summary>
     /// Spawn the player
     /// </summary>
     /// <returns>true if player was spawned, false if she didn't have enough lives</returns>
-    IEnumerator Spawn()
+    IEnumerator Spawn(bool firstSpawn = false)
     {
         //Update Visuals
         _visuals.Hide();
@@ -95,7 +98,8 @@ public class Player : MonoBehaviour
             transform.position = _cloneVatReference.GameObject.transform.position;
 
         //Wait to let the player 
-        yield return new WaitForSeconds(_deathWaitTime);
+        if (!firstSpawn)
+            yield return new WaitForSeconds(_deathWaitTime);
 
         //Start the smoke effect
         Instantiate(_smoke, transform.position, Quaternion.identity);
@@ -172,6 +176,12 @@ public class Player : MonoBehaviour
         _countCanvas.GetComponentInChildren<Text>().text = _acidTurnsLeft.ToString();
     }
 
+    void OnPlayerAct()
+    {
+        CountDownAcid();
+        _turns++;
+    }
+
     void CountDownAcid()
     {
         //Don't do anything if the player isn't melting
@@ -190,11 +200,21 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// Exit the level
+    /// Stop the play of the game and show the win canvas
     /// </summary>
-    public void ExitLevel()
+    public void Win()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //Disable the player
+        _state = PlayerState.Dead;
+
+        //Hide now-useless UI
+        _lifeCanvasObject.SetActive(false);
+        transform.Find("UI").gameObject.SetActive(false);
+
+        //Make the Win screen appear
+        Instantiate(_EndCanvas).GetComponent<EndScreen>().ActivateEndScreen(_deaths, _maxDeaths, _turns);
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void Lose()
@@ -204,6 +224,6 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerActEvent.OnEventTriggered -= CountDownAcid;
+        _playerActEvent.OnEventTriggered -= OnPlayerAct;
     }
 }

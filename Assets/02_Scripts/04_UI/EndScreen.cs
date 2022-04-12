@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class EndScreen : MonoBehaviour
 {
+    [Header("Apparition anim")]
+    [SerializeField] Vector3 _slidingOffset;
+    [SerializeField] float _slidingTime;
+    [SerializeField] float _slidingBackTime;
+
     [Header("Feedbacks")]
     [Tooltip("Lists of possible feedbacks from best to worst. First is impossible to get")]
     [SerializeField] List<string> _feedbacks;
@@ -64,5 +70,42 @@ public class EndScreen : MonoBehaviour
             _feedbackText.text = _feedbacks[feedbackNum];
 
         _notepad.SetActive(true);
+
+        StartCoroutine(SlideIn());
+    }
+
+    IEnumerator SlideIn()
+    {
+        Vector3 goal = _notepad.transform.position;
+
+        //Set the notepad outside the screen
+        _notepad.transform.position += Vector3.right * 5000;
+
+        //Slide to our first point
+        float time = 0.0f;
+        Vector3 velocity = Vector3.zero ;
+        do
+        {
+            _notepad.transform.position = Vector3.SmoothDamp(_notepad.transform.position, goal + _slidingOffset, ref velocity, _slidingTime - time);
+
+            yield return null;
+
+            time += Time.deltaTime;
+        } while (time < _slidingTime);
+
+
+        //Slide to the second point
+        velocity = Vector3.zero;
+        time = 0.0f;
+        do
+        {
+            _notepad.transform.position = Vector3.SmoothDamp(_notepad.transform.position, goal, ref velocity, _slidingBackTime - time);
+
+            yield return null;
+
+            time += Time.deltaTime;
+        } while (time < _slidingBackTime);
+
+        yield break;
     }
 }
