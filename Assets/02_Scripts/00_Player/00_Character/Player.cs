@@ -216,8 +216,6 @@ public class Player : MonoBehaviour
 
         //Make the Win screen appear
         Instantiate(_EndCanvas).GetComponent<EndScreen>().ActivateEndScreen(_deaths, _maxDeaths, _turns);
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void Lose()

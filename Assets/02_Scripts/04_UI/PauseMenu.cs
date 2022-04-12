@@ -11,29 +11,34 @@ public class PauseMenu : MonoBehaviour
     {
         if(callbackContext.performed)
         {
-            if (GameManager.PAUSED)
+            PauseUnpause();
+        }
+    }
+
+    void PauseUnpause()
+    {
+        if (GameManager.PAUSED)
+        {
+            if (_isOn)
             {
-                if (_isOn)
-                {
-                    //Unpause the game
-                    GameManager.UNPAUSE();
+                //Unpause the game
+                GameManager.UNPAUSE();
 
-                    //Hide the pause menu
-                    SetActiveChildren(false);
+                //Hide the pause menu
+                SetActiveChildren(false);
 
-                    _isOn = false;
-                }
+                _isOn = false;
             }
-            else
-            {
-                //Pause the game
-                GameManager.PAUSE();
+        }
+        else
+        {
+            //Pause the game
+            GameManager.PAUSE();
 
-                //Show the pause menu
-                SetActiveChildren(true);
+            //Show the pause menu
+            SetActiveChildren(true);
 
-                _isOn = true;
-            }
+            _isOn = true;
         }
     }
 
@@ -52,5 +57,10 @@ public class PauseMenu : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
+    }
+
+    public void ContinueButton()
+    {
+        PauseUnpause();
     }
 }
