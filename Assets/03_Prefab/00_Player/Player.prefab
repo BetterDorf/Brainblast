@@ -155,6 +155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 4389187492098939906}
   _sp: {fileID: 7393732742808854049}
+  _exitSprite: {fileID: 21300000, guid: c04c234556fc3e04eb7d9fb4f3119e12, type: 3}
+  _exitOffset: {x: 0, y: 1.5, z: 0}
+  _timeToExit: 0.15
+  _timeToTraverseExit: 0.25
+  _mask: {fileID: 5407272104463060065, guid: 62ac810a78c3e9b41b46453622ee763e, type: 3}
 --- !u!212 &7393732742808854049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -204,7 +209,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!95 &4389187492098939906
 Animator:

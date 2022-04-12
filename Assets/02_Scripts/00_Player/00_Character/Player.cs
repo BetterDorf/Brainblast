@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
         _state = PlayerState.Dead;
 
         //Start animating the player to go through the door
-        _visuals.GoThroughExit(exitPosition);
+        _visuals.StartCoroutine(_visuals.GoThroughExit(exitPosition));
 
         //Hide now-useless UI
         _lifeCanvas.SetActive(false);
