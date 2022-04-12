@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/01_Scenes/03_FinalLevels/02_Obstacles2.unity
     guid: d0dc42a95446f4d4dadc8316a49362aa
   - enabled: 1
-    path: Assets/01_Scenes/03_FinalLevels/03_Levers.unity
-    guid: f0a1f4f35dbc8ed4c8045aca5eb45c4b
-  - enabled: 1
-    path: Assets/01_Scenes/03_FinalLevels/04_LeversExt.unity
+    path: Assets/01_Scenes/03_FinalLevels/03_LeversExt.unity
     guid: 4677eb7535658c846a8d6f9635088c0a
+  - enabled: 1
+    path: Assets/01_Scenes/05_Archives/04_Levers.unity
+    guid: f0a1f4f35dbc8ed4c8045aca5eb45c4b
   - enabled: 1
     path: Assets/01_Scenes/03_FinalLevels/05_Levers+Explosion.unity
     guid: 7ecf334ab3f8891469c6f464f6b5649b
