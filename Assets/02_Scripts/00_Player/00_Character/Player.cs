@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     PlayerMovement _movement;
 
     [SerializeField] EventScriptableObject _playerActEvent;
+    [SerializeField] PlayerVisualsHandler _visuals;
 
     [Header("Level-Specific Variables")]
     [Tooltip("How many times you should die solving the level")]
@@ -33,7 +34,10 @@ public class Player : MonoBehaviour
 
     [Header("General Variables")]
     [SerializeField] int _acidTime = 7;
+    [Tooltip("Time it takes for the player to respawn and be able to move again")]
     [SerializeField] float _respawnTime = 0.25f;
+    [Tooltip("Time before we start respawning after dying")]
+    [SerializeField] float _deathWaitTime = 0.25f;
     int _acidTurnsLeft;
 
     [Header("References")]
@@ -70,8 +74,10 @@ public class Player : MonoBehaviour
         if (!_firstCloneVat)
             Debug.LogError("There must be a starting vat assigned");
 
+        //Select the clone vat
         _firstCloneVat.GetComponent<CloneVat>()?.Select();
 
+        //Spawn for the first time
         StartCoroutine(Spawn());
     }
 
@@ -81,33 +87,27 @@ public class Player : MonoBehaviour
     /// <returns>true if player was spawned, false if she didn't have enough lives</returns>
     IEnumerator Spawn()
     {
-        //TODO update visuals
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
-
-        //Lose a life
-        //_lives--;
-        //UpdateLifeCounter();
-        //if (_lives < 0)
-        //{
-        //    Lose();
-        //    yield break;
-        //}
+        //Update Visuals
+        _visuals.Hide();
 
         //Spawn the player
         if (_cloneVatReference)
             transform.position = _cloneVatReference.GameObject.transform.position;
 
-        yield return new WaitForSeconds(_respawnTime / 2.0f);
+        //Wait to let the player 
+        yield return new WaitForSeconds(_deathWaitTime);
 
+        //Start the smoke effect
         Instantiate(_smoke, transform.position, Quaternion.identity);
 
-        yield return new WaitForSeconds(_respawnTime / 2.0f);
+        //Wait
+        yield return new WaitForSeconds(_respawnTime);
 
         //Change the state to allow the player to move again
          _state = PlayerState.Alive;
 
-        //TODO update visuals
-        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        //update visuals
+        _visuals.ResetVisuals();
     }
 
     /// <summary>
@@ -163,6 +163,9 @@ public class Player : MonoBehaviour
         //Make the player start melting
         _state = PlayerState.Melting;
         _acidTurnsLeft = _acidTime;
+
+        //Update the player's visuals
+        _visuals.AcidEffect();
 
         //Update the canvas's visuals
         _countCanvas.SetActive(true);

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4389187492098939906}
+  _sp: {fileID: 7393732742808854049}
 --- !u!212 &7393732742808854049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -276,10 +277,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerActEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
+  _visuals: {fileID: 5546316070307369692}
   _maxDeaths: 2
   _firstCloneVat: {fileID: 0}
   _acidTime: 7
   _respawnTime: 0.5
+  _deathWaitTime: 0.5
   _cloneVatReference: {fileID: 11400000, guid: 742aadfc87167164e8e65cff23edd846, type: 2}
   _loseCanvas: {fileID: 5235471536572386882, guid: 27e6d47fb7ba2bf418a943a4ac810c3d, type: 3}
   _lifeCanvasObject: {fileID: 2323551847278867316, guid: ca55b1ca03f77fd45875554667619c07, type: 3}
