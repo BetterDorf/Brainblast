@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &87389351
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594424, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302288925646594427, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 862569b57ff986644aa68d9b98ecea37, type: 3}
 --- !u!1001 &459748615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,7 +253,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &524669331
 Transform:
@@ -1501,7 +1558,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &820719102
 Transform:
@@ -1574,6 +1631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e56689e2ade1a0499c6ed7292c78133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundReq: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
+  _clip: {fileID: 8300000, guid: 4e4dd7691c924184db087d261d74a00b, type: 3}
 --- !u!19719996 &820719106
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -1922,7 +1981,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!156049354 &1577317009
 Grid:
@@ -2046,7 +2105,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1707541622
 Transform:
@@ -2147,6 +2206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f036872ebe1a6264aba0463c14aa30f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundReq: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
+  _clip: {fileID: 8300000, guid: a18938a1d963e4147889ef2fb0271b08, type: 3}
 --- !u!19719996 &1707541626
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -2326,7 +2387,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1765509479
 Transform:
