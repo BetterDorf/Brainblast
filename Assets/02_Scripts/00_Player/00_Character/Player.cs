@@ -202,13 +202,13 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Stop the play of the game and show the win canvas
     /// </summary>
-    public void Win(Vector2 endPosition)
+    public void Win(Vector2 exitPosition)
     {
         //Disable the player
         _state = PlayerState.Dead;
 
         //Start animating the player to go through the door
-
+        _visuals.GoThroughExit(exitPosition);
 
         //Hide now-useless UI
         _lifeCanvas.SetActive(false);

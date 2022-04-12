@@ -62,7 +62,7 @@ public class PlayerVisualsHandler : MonoBehaviour
         }
     }
 
-    public void GoThroughExit()
+    public void GoThroughExit(Vector3 exitPos)
     {
 
     }
