@@ -61,4 +61,9 @@ public class PlayerVisualsHandler : MonoBehaviour
             Debug.LogError("There is non movement to animate");
         }
     }
+
+    public void GoThroughExit()
+    {
+
+    }
 }

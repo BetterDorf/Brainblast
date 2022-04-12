@@ -2724,6 +2724,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
+      propertyPath: _maxDeaths
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
       propertyPath: _firstCloneVat
       value: 
       objectReference: {fileID: 170014499}

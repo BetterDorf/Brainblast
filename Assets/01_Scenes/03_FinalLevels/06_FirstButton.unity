@@ -236,6 +236,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
+      propertyPath: _maxDeaths
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6036305288524402235, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
       propertyPath: _loseCanvas
       value: 
       objectReference: {fileID: 5235471536572386882, guid: 27e6d47fb7ba2bf418a943a4ac810c3d, type: 3}
