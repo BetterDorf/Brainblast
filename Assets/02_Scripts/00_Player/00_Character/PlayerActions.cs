@@ -55,7 +55,7 @@ public class PlayerActions : MonoBehaviour
         List<GameObject> corpses = _player.Corpses;
 
         //Remove null gameObjects
-        corpses.RemoveAll((GameObject x) => { return !x; } );
+        corpses.RemoveAll(x => !x);
 
         //Send ActionEvent only if there are corpses to explode
         if(corpses.Count != 0)
