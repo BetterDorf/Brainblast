@@ -15,7 +15,7 @@ public class Corpse : MonoBehaviour
 
     void RandomizeSprite()
     {
-        _sr.sprite = _sprites[Random.Range(0, _sprites.Count - 1)];
+        _sr.sprite = _sprites[Random.Range(0, _sprites.Count)];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

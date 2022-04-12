@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Obstacle : Interactable
 {
+    [Tooltip("Breaking Sounds")]
+    [SerializeField] List<AudioClip> _clips;
+    [SerializeField] SoundRequests _sound;
+
     public override bool Interact()
     {
         return false;
@@ -19,6 +23,9 @@ public class Obstacle : Interactable
     IEnumerator DelayedDestroy()
     {
         yield return null;
+
+        //Play sound
+        _sound.Request(_clips[Random.Range(0, _clips.Count)]);
 
         Destroy(gameObject);
     }
