@@ -7,6 +7,9 @@ public class Exit : MonoBehaviour
 {
     [SerializeField] EventScriptableObject _playerMove;
 
+    [Tooltip("Range in which the player is detected for the openning animation")]
+    [SerializeField] float _detectionRange = 2.5f;
+
     Animator _animator;
     bool _isOpen = false;
 
@@ -34,7 +37,7 @@ public class Exit : MonoBehaviour
 
     void CheckIfPlayerIsClose()
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, Vector2.one * 2, 0.0f, LayerMask.GetMask("Default"));
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(transform.position, Vector2.one * _detectionRange * 2, 0.0f, LayerMask.GetMask("Default"));
 
         //Check if player is within the found items
         if(Array.Exists(collider2Ds, (Collider2D col) => { return col.GetComponent<Player>() != null; }))

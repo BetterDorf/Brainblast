@@ -45,7 +45,6 @@ public class PlayerActions : MonoBehaviour
     {
         if (callbackContext.performed && _player.State != Player.PlayerState.Dead && _movement.StoppedMoving && !GameManager.PAUSED)
         {
-            _playerActionEvent.TriggerEvent();
             StartCoroutine(ExplodeAction());
         }
     }
@@ -56,13 +55,11 @@ public class PlayerActions : MonoBehaviour
         List<GameObject> corpses = _player.Corpses;
 
         //Remove null gameObjects
-        corpses.RemoveAll(x => !x);
+        corpses.RemoveAll((GameObject x) => { return !x; } );
 
-        ////Die before the explosion if we have no corpse
-        //if (corpses.Count == 0)
-        //{
-        //    DieAction();
-        //}
+        //Send ActionEvent only if there are corpses to explode
+        if(corpses.Count != 0)
+            _playerActionEvent.TriggerEvent();
 
         //Explode the corpses
         foreach (GameObject corpse in corpses)
