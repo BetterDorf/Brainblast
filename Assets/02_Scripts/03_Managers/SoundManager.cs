@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] SoundRequests _requests;
     [SerializeField] int _maxSourcesAtOnce = 16;
-    [SerializeField] int _currentSources = 0;
+    int _currentSources = 0;
 
     List<AudioClip> _clipsBacklog = new List<AudioClip>();
     bool _emptyingBacklog = false;

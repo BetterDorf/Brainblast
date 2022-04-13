@@ -51,11 +51,12 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator ExplodeAction()
     {
-        //grab corpses
-        List<GameObject> corpses = _player.Corpses;
-
         //Remove null gameObjects
-        corpses.RemoveAll(x => !x);
+        _player.Corpses.RemoveAll(x => !x);
+
+        //grab corpses
+        List<GameObject> corpses = new List<GameObject>(_player.Corpses);
+
 
         //Send ActionEvent only if there are corpses to explode
         if(corpses.Count != 0)
@@ -73,7 +74,7 @@ public class PlayerActions : MonoBehaviour
         }
 
         //Reset the corpses
-        _player.ResetCorpses();
+       // _player.ResetCorpses();
     }
 
     public void RevealInput(InputAction.CallbackContext callbackContext)

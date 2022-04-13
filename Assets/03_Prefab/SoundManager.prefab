@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _requests: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
   _maxSourcesAtOnce: 16
-  _currentSources: 0
 --- !u!82 &5025393508098643258
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59,7 +58,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9dc3bd6139ecd864ca18296418b97d7a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.055
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
