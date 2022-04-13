@@ -10,6 +10,10 @@ public class Exit : MonoBehaviour
     [Tooltip("Range in which the player is detected for the openning animation")]
     [SerializeField] float _detectionRange = 2.5f;
 
+    [Header("Sounds")]
+    [SerializeField] SoundRequests _soundReq;
+    [SerializeField] AudioClip _clip;
+
     Animator _animator;
     bool _isOpen = false;
 
@@ -58,6 +62,12 @@ public class Exit : MonoBehaviour
     /// <param name="open">Wether the door should be open or closed</param>
     void OpenOrClose(bool open)
     {
+        if (_isOpen == open)
+            return;
+
+        //Play sound
+        _soundReq.Request(_clip);
+
         //Switch the door's status
         _isOpen = open;
 

@@ -10,6 +10,7 @@ public class SoundRequests : ScriptableObject
 
     public void Request(AudioClip clip)
     {
-        OnRequest?.Invoke(clip);
+        if (clip != null)
+            OnRequest?.Invoke(clip);
     }
 }

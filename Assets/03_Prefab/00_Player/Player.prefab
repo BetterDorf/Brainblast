@@ -281,14 +281,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4d60e82cb9bc94da09d8dd8e857c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerActEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
-  _visuals: {fileID: 5546316070307369692}
+  _soundReq: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
+  _deathsClips:
+  - {fileID: 8300000, guid: a866ce8e8d02bc04e94199263001e2a1, type: 3}
+  - {fileID: 8300000, guid: 4a87ee33eb89643488da6d26c45923b9, type: 3}
+  - {fileID: 8300000, guid: 13db039b622a6ca438091613a47c6999, type: 3}
+  - {fileID: 8300000, guid: 7621f9d801e0f0946840db6df967a02c, type: 3}
+  - {fileID: 8300000, guid: 07a6a2dde1dd9234c8d3fd3ce8f2e16f, type: 3}
   _maxDeaths: 2
   _firstCloneVat: {fileID: 0}
   _acidTime: 7
   _respawnTime: 0.5
   _deathWaitTime: 0.7
   _cloneVatReference: {fileID: 11400000, guid: 742aadfc87167164e8e65cff23edd846, type: 2}
+  _playerActEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
+  _visuals: {fileID: 5546316070307369692}
   _loseCanvas: {fileID: 5235471536572386882, guid: 27e6d47fb7ba2bf418a943a4ac810c3d, type: 3}
   _EndCanvas: {fileID: 6723632089460129981, guid: 629b16f9d2cdad54993fc0da79f6b354, type: 3}
   _lifeCanvasObject: {fileID: 2323551847278867316, guid: ca55b1ca03f77fd45875554667619c07, type: 3}
@@ -449,6 +456,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerActionEvent: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
+  _soundReq: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
+  _stepsClips:
+  - {fileID: 8300000, guid: 5a404e5f7e8d83f45bb44f20c66e79df, type: 3}
+  - {fileID: 8300000, guid: 16f863def8391ed4d896df23394f8ea8, type: 3}
+  _acidStepClip: {fileID: 8300000, guid: de40d8413a1919242be46d2f2840d6fa, type: 3}
   _speed: 5
   _timeBetweenMoves: 0.05
   _bufferInputTreshold: 0

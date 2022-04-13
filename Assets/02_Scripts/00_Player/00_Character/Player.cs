@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    Collider2D _collider2D;
-    PlayerMovement _movement;
-
-    [SerializeField] EventScriptableObject _playerActEvent;
-    [SerializeField] PlayerVisualsHandler _visuals;
+    [Header("Sounds")]
+    [SerializeField] SoundRequests _soundReq;
+    [SerializeField] List<AudioClip> _deathsClips;
 
     [Header("Level-Specific Variables")]
     [Tooltip("How many times you should die solving the level")]
@@ -44,6 +42,10 @@ public class Player : MonoBehaviour
 
     [Header("References")]
     [SerializeField] ObjectReferenceScriptableObject _cloneVatReference;
+    [SerializeField] EventScriptableObject _playerActEvent;
+    [SerializeField] PlayerVisualsHandler _visuals;
+    Collider2D _collider2D;
+    PlayerMovement _movement;
 
     [Header("UI")]
     [SerializeField] GameObject _loseCanvas;
@@ -135,7 +137,11 @@ public class Player : MonoBehaviour
         if (_state == PlayerState.Dead)
             return;
 
+        //Create a corpse
         _corpses.Add(Instantiate(_corpse, transform.position, Quaternion.identity));
+
+        //Play a sound
+        _soundReq.Request(_deathsClips[Random.Range(0, _deathsClips.Count)]);
 
         Die();
     }

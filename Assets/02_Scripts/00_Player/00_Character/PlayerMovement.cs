@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] EventScriptableObject _playerActionEvent;
+    
+    [Header("Sounds")]
+    [SerializeField] SoundRequests _soundReq;
+    [SerializeField] List<AudioClip> _stepsClips;
+    [SerializeField] AudioClip _acidStepClip;
 
     PlayerInput _input;
     Player _player;
@@ -119,6 +124,12 @@ public class PlayerMovement : MonoBehaviour
 
         //Update the visual
         _visuals.StartWalkAnimation(movement);
+
+        //Play the sound
+        if (_player.State == Player.PlayerState.Melting)
+            _soundReq.Request(_acidStepClip);
+        else
+            _soundReq.Request(_stepsClips[Random.Range(0, _stepsClips.Count)]);
     }
 
     IEnumerator GoTo(Vector3 goal)

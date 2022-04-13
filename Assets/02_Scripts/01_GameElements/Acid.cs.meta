@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - _soundReq: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
-  - _clip: {fileID: 8300000, guid: 4e4dd7691c924184db087d261d74a00b, type: 3}
+  - _clip: {fileID: 8300000, guid: 40ddbc7b6c8b2a64a9baee7f5c49e0b4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
