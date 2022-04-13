@@ -106,6 +106,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe4a4540f1a108f499637ca378ce6723, type: 3}
   - {fileID: 21300000, guid: b6f395b1f6ac7814f9c97940eedea9aa, type: 3}
   - {fileID: 21300000, guid: 8df8688422bc1174999afb7f96b4448d, type: 3}
+  _intensity: 0.2
+  _shakes: 8
+  _speed: 8
 --- !u!50 &159985282380039581
 Rigidbody2D:
   serializedVersion: 4

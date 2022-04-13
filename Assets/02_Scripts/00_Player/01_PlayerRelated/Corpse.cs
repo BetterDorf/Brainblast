@@ -8,6 +8,10 @@ public class Corpse : MonoBehaviour
     [SerializeField] SpriteRenderer _sr;
     [SerializeField] List<Sprite> _sprites;
 
+    [Header("Shake")]
+    [SerializeField] float _intensity;
+    [SerializeField] int _shakes;
+    [SerializeField] float _speed;
     private void Start()
     {
         RandomizeSprite();
@@ -33,6 +37,9 @@ public class Corpse : MonoBehaviour
     {
         //Create first explosion
         Instantiate(_explosionObject, transform.position, Quaternion.identity);
+
+        //Make screen shake
+        Camera.main?.GetComponent<CameraControl>()?.Shake(_intensity, _shakes, _speed);
 
         //Destroy ourselves
         Destroy(gameObject);
