@@ -981,12 +981,13 @@ MonoBehaviour:
   - IMPOSSIBLE !!!!
   - Perfection!
   - Great
+  - Good
   - Alright...
   - Passable...
   - Poor
   - Terrible
   - Awful
-  _stepSize: 2
+  _stepSize: 1
   _notepad: {fileID: 6723632089675162967}
   _clonesUsedText: {fileID: 6723632089930233486}
   _feedbackText: {fileID: 6723632090988447615}
