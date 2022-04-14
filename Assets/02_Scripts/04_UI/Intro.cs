@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Intro : MonoBehaviour
 {
+    [SerializeField] GameObject _backgroundSprite;
+    [SerializeField] int _number;
+
     private void Start()
     {
-        GameManager.PAUSE();
-    }
-
-    public void ContinueButton()
-    {
-        GameManager.UNPAUSE();
-        gameObject.SetActive(false);
+        for (int i = 0; i < _number; i++)
+        {
+            Instantiate(_backgroundSprite);
+        }
     }
 }

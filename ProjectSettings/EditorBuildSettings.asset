@@ -27,16 +27,16 @@ EditorBuildSettings:
     path: Assets/01_Scenes/03_FinalLevels/06_FirstButton.unity
     guid: e5498682d351af14d9ce40bc855c306b
   - enabled: 1
-    path: Assets/01_Scenes/03_FinalLevels/07_ButtonAndCorpses.unity
+    path: Assets/01_Scenes/03_FinalLevels/07_ButtonTooFar.unity
     guid: d6355ec1753205142a9200c3dacc0b09
   - enabled: 1
     path: Assets/01_Scenes/03_FinalLevels/08_Acid.unity
     guid: 60c03931c5680264c903c42a8a06f3c8
   - enabled: 1
-    path: Assets/01_Scenes/03_FinalLevels/09_LeversAndLava.unity
+    path: Assets/01_Scenes/03_FinalLevels/09_LeverConundrum.unity
     guid: 7d7efd25939b72744a7640b0acd9bb8a
   - enabled: 1
-    path: Assets/01_Scenes/03_FinalLevels/10_AcidDisolvesCorpses.unity
+    path: Assets/01_Scenes/03_FinalLevels/10_AcidDisolvesThings.unity
     guid: af6052a3ad8957345be060bc9e38db29
   - enabled: 1
     path: Assets/01_Scenes/03_FinalLevels/11_VatsNAcid.unity
@@ -45,7 +45,7 @@ EditorBuildSettings:
     path: Assets/01_Scenes/03_FinalLevels/12_BigTest.unity
     guid: 0a86c872ba0a7434e9889d063154bd12
   - enabled: 1
-    path: Assets/01_Scenes/03_FinalLevels/Victory.unity
+    path: Assets/01_Scenes/01_Interface/Victory.unity
     guid: c5230a867218c2945a95a462da61c7a8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f13ef390f71cac244918791533470006, type: 2}
