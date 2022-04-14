@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] SoundRequests _soundReq;
     [SerializeField] List<AudioClip> _deathsClips;
+    [SerializeField] AudioClip _winClip;
 
     [Header("Level-Specific Variables")]
     [Tooltip("How many times you should die solving the level")]
@@ -208,13 +209,16 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Stop the play of the game and show the win canvas
     /// </summary>
-    public void Win(Vector2 exitPosition)
+    public IEnumerator Win(Vector2 exitPosition)
     {
         //Disable the player
         _state = PlayerState.Dead;
 
+        //Play win sound
+        _soundReq.Request(_winClip);
+
         //Start animating the player to go through the door
-        _visuals.StartCoroutine(_visuals.GoThroughExit(exitPosition));
+        yield return _visuals.StartCoroutine(_visuals.GoThroughExit(exitPosition));
 
         //Hide now-useless UI
         _lifeCanvas.SetActive(false);

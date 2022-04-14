@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2183e8e09cc350748b97949e1680d110, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -149,6 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMove: {fileID: 11400000, guid: 0fd9f64116eefa14293eabcb265ff650, type: 2}
   _detectionRange: 1
+  _confetti: {fileID: 4993144224930122134, guid: d7724b1989cd6904db6abb25492d1a68, type: 3}
+  _confettiOffset: {x: 0, y: 0.5, z: 0}
   _soundReq: {fileID: 11400000, guid: f0096d7938e735b4a92f8797cc91e26e, type: 2}
   _clip: {fileID: 8300000, guid: b9acd34edf517cc428d05c8a101de618, type: 3}
 --- !u!61 &1816928082214316250

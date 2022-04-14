@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/01_Scenes/03_FinalLevels/03_LeversExt.unity
     guid: 4677eb7535658c846a8d6f9635088c0a
   - enabled: 1
+    path: Assets/01_Scenes/03_FinalLevels/04_LeversLava.unity
+    guid: dff4223d719beb948bae1b2d4f0b60d2
+  - enabled: 0
     path: Assets/01_Scenes/05_Archives/04_Levers.unity
     guid: f0a1f4f35dbc8ed4c8045aca5eb45c4b
   - enabled: 1

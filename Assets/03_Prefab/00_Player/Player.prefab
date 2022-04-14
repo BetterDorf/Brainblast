@@ -288,6 +288,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 13db039b622a6ca438091613a47c6999, type: 3}
   - {fileID: 8300000, guid: 7621f9d801e0f0946840db6df967a02c, type: 3}
   - {fileID: 8300000, guid: 07a6a2dde1dd9234c8d3fd3ce8f2e16f, type: 3}
+  _winClip: {fileID: 8300000, guid: 44c1a32f275f8ff45a147222fe780e3e, type: 3}
   _maxDeaths: 2
   _firstCloneVat: {fileID: 0}
   _acidTime: 7

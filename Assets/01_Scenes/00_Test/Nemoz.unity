@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 1816928082214316251, guid: 6edae634a2d476e47b8846d944c8cb38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6edae634a2d476e47b8846d944c8cb38, type: 3}
 --- !u!1 &118828487
@@ -292,6 +296,10 @@ PrefabInstance:
     - target: {fileID: 8804439813702811007, guid: 1bf9f804b71a283439dd73751131d7b3, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804439813702811007, guid: 1bf9f804b71a283439dd73751131d7b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bf9f804b71a283439dd73751131d7b3, type: 3}
@@ -1140,6 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e56689e2ade1a0499c6ed7292c78133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundReq: {fileID: 0}
+  _clip: {fileID: 0}
 --- !u!19719996 &1034533362
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -2329,6 +2339,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 1413507968613868443, guid: c1e48c071e450de4eb2234d1543d6697, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3570054979783521825, guid: c1e48c071e450de4eb2234d1543d6697, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2440,15 +2454,15 @@ CompositeCollider2D:
       - X: -60000000
         Y: -40000000
       - X: -60000000
-        Y: -49999900
+        Y: -50000000
       - X: -50000000
-        Y: -49999900
+        Y: -50000000
   m_CompositePaths:
     m_Paths:
-    - - {x: -5.000029, y: -4.99999}
+    - - {x: -5.000029, y: -5}
       - {x: -5.000029, y: -4}
       - {x: -6, y: -4.000029}
-      - {x: -5.999971, y: -4.99999}
+      - {x: -5.999971, y: -5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1543443642
@@ -2484,6 +2498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f036872ebe1a6264aba0463c14aa30f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundReq: {fileID: 0}
+  _clip: {fileID: 0}
 --- !u!19719996 &1543443644
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -2699,6 +2715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7393732743617446142, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 495bd1f87ff4cca4d9fba3b1edbbb57b, type: 3}
 --- !u!1001 &1945062654
@@ -2711,6 +2731,10 @@ PrefabInstance:
     - target: {fileID: 5304044027614820417, guid: f753eea532b5de746ad7c535570b6966, type: 3}
       propertyPath: m_Name
       value: Vat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304044027614820417, guid: f753eea532b5de746ad7c535570b6966, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5304044027614820419, guid: f753eea532b5de746ad7c535570b6966, type: 3}
       propertyPath: m_RootOrder
@@ -2820,6 +2844,10 @@ PrefabInstance:
     - target: {fileID: 4314182513732493563, guid: fccf7b4d6e006f04e905e3ba45fb14c7, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314182513732493563, guid: fccf7b4d6e006f04e905e3ba45fb14c7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fccf7b4d6e006f04e905e3ba45fb14c7, type: 3}

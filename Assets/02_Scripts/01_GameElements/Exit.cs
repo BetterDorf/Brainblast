@@ -10,6 +10,11 @@ public class Exit : MonoBehaviour
     [Tooltip("Range in which the player is detected for the openning animation")]
     [SerializeField] float _detectionRange = 2.5f;
 
+    [Header("Confetti")]
+    [Tooltip("Object to create when the player wins")]
+    [SerializeField] GameObject _confetti;
+    [SerializeField] Vector3 _confettiOffset;
+
     [Header("Sounds")]
     [SerializeField] SoundRequests _soundReq;
     [SerializeField] AudioClip _clip;
@@ -35,7 +40,11 @@ public class Exit : MonoBehaviour
 
         if (collision.TryGetComponent(out player))
         {
-            player.Win(transform.position);
+            //Make player win
+            player.StartCoroutine(player.Win(transform.position));
+
+            //Play particle effect
+            Instantiate(_confetti, transform.position + _confettiOffset, Quaternion.identity);
         }
     }
 

@@ -19,6 +19,8 @@ public class EndScreen : MonoBehaviour
 
     [Tooltip("Object holding what we display")]
     [SerializeField] GameObject _notepad;
+    [Tooltip("Object to show if we have a perfect")]
+    [SerializeField] GameObject _perfectStar;
 
     [Header("Texts on the notepad")]
     [Tooltip("Text for the number of clones used")]
@@ -51,10 +53,13 @@ public class EndScreen : MonoBehaviour
 
         //Set the feedback
         int feedbackNum;
+        bool perfect = false;
 
         //Bypass index calculation if we did better than ideal
         if (clonesUsed < idealClones)
+        {
             feedbackNum = 0;
+        }
         else
         {
             //index is the number of excendentary clones we used divided by how many are needed to go to the next feedback.
@@ -69,12 +74,16 @@ public class EndScreen : MonoBehaviour
             //Fall back to the last feedback
             _feedbackText.text = _feedbacks[feedbackNum];
 
+        //Check if we did perfect or better
+        if (feedbackNum <= 1)
+            perfect = true;
+
         _notepad.SetActive(true);
 
-        StartCoroutine(SlideIn());
+        StartCoroutine(SlideIn(perfect));
     }
 
-    IEnumerator SlideIn()
+    IEnumerator SlideIn(bool perfect = false)
     {
         Vector3 goal = _notepad.transform.position;
 
@@ -105,6 +114,12 @@ public class EndScreen : MonoBehaviour
 
             time += Time.deltaTime;
         } while (time < _slidingBackTime);
+
+        //If we did a perfect, enable an additional effect
+        if (perfect)
+        {
+            _perfectStar.SetActive(true);
+        }
 
         yield break;
     }
