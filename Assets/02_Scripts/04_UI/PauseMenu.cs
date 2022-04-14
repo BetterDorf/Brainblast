@@ -28,6 +28,10 @@ public class PauseMenu : MonoBehaviour
                 SetActiveChildren(false);
 
                 _isOn = false;
+
+                //Lock the cursor
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
         else
@@ -39,6 +43,10 @@ public class PauseMenu : MonoBehaviour
             SetActiveChildren(true);
 
             _isOn = true;
+
+            //unlock the cursor
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

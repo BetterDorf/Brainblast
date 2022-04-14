@@ -17,10 +17,12 @@ public class EndScreen : MonoBehaviour
     [Tooltip(("How many clones off you need to be to reach the next feedback"))]
     [SerializeField] int _stepSize = 1;
 
+    [Header("Objects to enable")]
     [Tooltip("Object holding what we display")]
     [SerializeField] GameObject _notepad;
     [Tooltip("Object to show if we have a perfect")]
     [SerializeField] GameObject _perfectStar;
+    [SerializeField] GameObject _buttons;
 
     [Header("Texts on the notepad")]
     [Tooltip("Text for the number of clones used")]
@@ -120,6 +122,8 @@ public class EndScreen : MonoBehaviour
         {
             _perfectStar.SetActive(true);
         }
+        //Activate the buttons
+        _buttons.SetActive(true);
 
         yield break;
     }

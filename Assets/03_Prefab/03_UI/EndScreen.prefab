@@ -754,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8882208895609498615
 Transform:
   m_ObjectHideFlags: 0
@@ -1182,6 +1182,7 @@ MonoBehaviour:
   _stepSize: 1
   _notepad: {fileID: 6723632089675162967}
   _perfectStar: {fileID: 1678888302166065853}
+  _buttons: {fileID: 4402866694529959134}
   _clonesUsedText: {fileID: 6723632089930233486}
   _feedbackText: {fileID: 6723632090988447615}
   _timeText: {fileID: 6723632091103002778}
