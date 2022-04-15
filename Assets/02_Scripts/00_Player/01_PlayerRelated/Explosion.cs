@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    [Header("Stats")]
     [Tooltip("The amount of tiles the explosion will expand to")]
     [SerializeField] int _power = 2;
     public int Power { get => _power; set => _power = value; }
@@ -20,6 +21,12 @@ public class Explosion : MonoBehaviour
     int _id = 0;
     bool _idIsAssigned = false;
 
+    [Header("Sound")]
+    bool _canMakeSound = true;
+    [SerializeField] SoundRequests _soundRequ;
+    [SerializeField] AudioClip _clip;
+
+    [Header("Refs")]
     [SerializeField] Collider2D _collider;
     [SerializeField] GameObject _explosionObject;
 
@@ -30,11 +37,16 @@ public class Explosion : MonoBehaviour
             _id = _NEXTID++;
         }
 
+        //Play sound
+        if (_canMakeSound)
+        {
+            _soundRequ.Request(_clip);
+        }
+
         StartCoroutine(DelayedDestroy());
 
         StartCoroutine(SpawnExplosions());
 
-        //Todo
         //Check for interactable and player to interact with
         RaycastHit2D[] hit2Ds = new RaycastHit2D[2];
         _collider.Raycast(Vector2.up, hit2Ds, 0.1f);
@@ -44,7 +56,7 @@ public class Explosion : MonoBehaviour
         {
             if (hit2D)
             {
-                hit2D.collider.GetComponent<Player>()?.Melt();
+                hit2D.collider.GetComponent<Player>()?.Kill();
                 hit2D.collider.GetComponent<Interactable>()?.ExplosionInteract();
             }
         }
@@ -130,23 +142,21 @@ public class Explosion : MonoBehaviour
             }
 
             //Create an explosion if conditions allows it
-            if (canExplode)
+            if (canExplode || canExplodeWeak)
             {
                 Explosion explo = Instantiate(_explosionObject, transform.position + (Vector3)direction, Quaternion.identity)
                     .GetComponent<Explosion>();
 
-                //Make the power of that explosion to be 1 less
-                explo.Power = _power - 1;
+                //Make the power of that explosion to be 1 less or 0 if we have the weak explosion
+                explo.Power = canExplode ? _power - 1 : 0;
 
                 //Assign the explosion's id to be the same as this
                 explo.AssignId(_id);
-            }
-            else if (canExplodeWeak)
-            {
-                GameObject explo = Instantiate(_explosionObject, transform.position + (Vector3)direction, Quaternion.identity);
 
-                //Make the power of that explosion to be 0
-                explo.GetComponent<Explosion>()._power = 0;
+                //To ensure only one explosion makes sound per generation, give the new explosion the same right to make sound as this one
+                explo._canMakeSound = _canMakeSound;
+                //Then this explosion and it's child can't make sounds anymore
+                _canMakeSound = false;
             }
 
             //Rotate direction vector if we aren't done
